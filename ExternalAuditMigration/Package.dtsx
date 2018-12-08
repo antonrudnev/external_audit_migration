@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{659AD9AF-0F8A-41EC-BF5C-75EBA6B5554A}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{F3B44C5B-F167-4B55-80D6-419EED27AA82}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -40,7 +40,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
-          SQLTask:SqlStatementSource="DELETE FROM EXTERNAL_AUDIT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM EXTERNAL_AUDIT&#xA;GO&#xA;IF OBJECT_ID('TMP_MIGR_EXT_AUD') IS NOT NULL &#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;GO&#xA;CREATE TABLE TMP_MIGR_EXT_AUD (&#xA;&#x9;VALUE_NAME nvarchar(50),&#xA;&#x9;VALUE nvarchar(50)&#xA;)&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1252,13 +1252,13 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="142,42"
-          Id="Package\Migrate Data"
-          TopLeft="126,145" />
-        <NodeLayout
           Size="179,42"
           Id="Package\Clean Target Tables"
           TopLeft="112,12" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Migrate Data"
+          TopLeft="126,145" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="199.25,54">
@@ -1290,9 +1290,29 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="133,42"
+          Id="Package\Migrate Data\Row Count"
+          TopLeft="459,197" />
+        <NodeLayout
           Size="139,42"
           Id="Package\Migrate Data\LMS Source"
           TopLeft="80,21" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Migrate Data\Lookup AUDITOR"
+          TopLeft="81,198" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Migrate Data\OLE DB Destination"
+          TopLeft="416,762" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Migrate Data\Row Count 1"
+          TopLeft="457,103" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Derived Column"
+          TopLeft="102,502" />
         <NodeLayout
           Size="179,42"
           Id="Package\Migrate Data\Lookup CONTRACT"
@@ -1331,10 +1351,30 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Migrate Data\Row Count 1"
-          TopLeft="457,103" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="249,218.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="210,0"
+              Start="0,0"
+              End="202.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="202.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="45.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output]"
           TopLeft="252,122.5">
@@ -1359,52 +1399,6 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Migrate Data\OLE DB Destination"
-          TopLeft="276,422" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Derived Column"
-          TopLeft="148,294" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Derived Column Output]"
-          TopLeft="227,336">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="137.5,86"
-              Start="0,0"
-              End="137.5,78.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39"
-                    Point2="0,43"
-                    Point3="4,43" />
-                  <mssgle:LineSegment
-                    End="133.5,43" />
-                  <mssgle:CubicBezierSegment
-                    Point1="133.5,43"
-                    Point2="137.5,43"
-                    Point3="137.5,47" />
-                  <mssgle:LineSegment
-                    End="137.5,78.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Migrate Data\Lookup AUDITOR"
-          TopLeft="81,198" />
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output]"
           TopLeft="163.75,142">
@@ -1430,66 +1424,72 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output]"
+          TopLeft="181,544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="323.5,218"
+              Start="0,0"
+              End="323.5,210.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,105"
+                    Point2="0,109"
+                    Point3="4,109" />
+                  <mssgle:LineSegment
+                    End="319.5,109" />
+                  <mssgle:CubicBezierSegment
+                    Point1="319.5,109"
+                    Point2="323.5,109"
+                    Point3="323.5,113" />
+                  <mssgle:LineSegment
+                    End="323.5,210.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output1]"
           TopLeft="165,240">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="62,54"
+              EndConnector="16,262"
               Start="0,0"
-              End="62,46.5">
+              End="16,254.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23" />
+                    End="0,127" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23"
-                    Point2="0,27"
-                    Point3="4,27" />
+                    Point1="0,127"
+                    Point2="0,131"
+                    Point3="4,131" />
                   <mssgle:LineSegment
-                    End="58,27" />
+                    End="12,131" />
                   <mssgle:CubicBezierSegment
-                    Point1="58,27"
-                    Point2="62,27"
-                    Point3="62,31" />
+                    Point1="12,131"
+                    Point2="16,131"
+                    Point3="16,135" />
                   <mssgle:LineSegment
-                    End="62,46.5" />
+                    End="16,254.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-17.19138671875,32,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Migrate Data\Row Count"
-          TopLeft="459,197" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
-          TopLeft="249,218.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="210,0"
-              Start="0,0"
-              End="202.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="202.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="45.44361328125,5,111.6127734375,11.609375"
+              BoundingBox="-40.19138671875,136,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1510,12 +1510,12 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup CONTRACT">
+    design-time-name="Package\Migrate Data\Lookup AUDITOR">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1525,7 +1525,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1546,12 +1546,12 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup AUDITOR">
+    design-time-name="Package\Migrate Data\Lookup CONTRACT">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1561,7 +1561,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
