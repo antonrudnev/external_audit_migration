@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-Q9PC6LV\Olga"
   DTS:DTSID="{1E86412F-F4BC-4E54-BC9B-37C139E21925}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{58ABB7C3-6AA3-4A60-8DDB-CAD09058ED4F}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{13FFECB4-56CD-4F13-A6FA-4E83D17B87D0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -27,22 +27,6 @@
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Clean Target Tables"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0C507D8B-0059-4CD4-9439-9F8D3D3568E0}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Clean Target Tables"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
-          SQLTask:SqlStatementSource="DELETE FROM EXTERNAL_AUDIT&#xA;GO&#xA;IF OBJECT_ID('TMP_MIGR_EXT_AUD') IS NOT NULL &#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;GO&#xA;CREATE TABLE TMP_MIGR_EXT_AUD (&#xA;&#x9;VALUE_NAME nvarchar(50),&#xA;&#x9;VALUE nvarchar(50)&#xA;)&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Migrate Data"
       DTS:CreationName="Microsoft.Pipeline"
@@ -59,11 +43,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Migrate Data\AUDITOR Exceptions"
+              refId="Package\Migrate Data\AUDITOR Not Found"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="AUDITOR Exceptions"
+              name="AUDITOR Not Found"
               usesDispositions="true"
               version="4">
               <properties>
@@ -83,7 +67,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -116,7 +100,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Migrate Data\AUDITOR Exceptions.Connections[OleDbConnection]"
+                  refId="Package\Migrate Data\AUDITOR Not Found.Connections[OleDbConnection]"
                   connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Convergence]"
                   description="The OLE DB runtime connection used to access the database."
@@ -124,36 +108,36 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input]"
+                  refId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
                       cachedDataType="wstr"
                       cachedLength="21"
                       cachedName="VALUE_NAME"
-                      externalMetadataColumnId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      externalMetadataColumnId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
                       lineageId="Package\Migrate Data\Label AUDITOR.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
                     <inputColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].Columns[INSTITUTION_CODE]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].Columns[INSTITUTION_CODE]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="INSTITUTION_CODE"
-                      externalMetadataColumnId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      externalMetadataColumnId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[INSTITUTION_CODE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
                       dataType="wstr"
                       length="50"
                       name="VALUE_NAME" />
                     <externalMetadataColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
                       dataType="wstr"
                       length="50"
                       name="VALUE" />
@@ -162,22 +146,149 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Migrate Data\AUDITOR Exceptions.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Migrate Data\AUDITOR Exceptions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Migrate Data\AUDITOR Exceptions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Migrate Data\AUDITOR Exceptions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\CONTRACT Not Found"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CONTRACT Not Found"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TMP_MIGR_EXT_AUD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\CONTRACT Not Found.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="VALUE_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      lineageId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].Columns[CONTRACT_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CONTRACT_NUMBER"
+                      externalMetadataColumnId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[CONTRACT_NUMBER]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\CONTRACT Not Found.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\CONTRACT Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\CONTRACT Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\CONTRACT Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -333,6 +444,80 @@
               </outputs>
             </component>
             <component
+              refId="Package\Migrate Data\Label CONTRACT"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Label CONTRACT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      name="VALUE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"CONTRACT_NUMBER"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"CONTRACT_NUMBER"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Migrate Data\LMS Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -348,7 +533,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">"LMSADM5"."PROJ"</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -357,9 +542,34 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER, FISCAL_YEAR, AUDITOR_TYPE_CD, AUDITOR_TYPE_DES, CAST(TRIM(INSTITUTION_CODE) AS NVARCHAR2(50)) INSTITUTION_CODE, INSTITUTION_CODE_DESCRIPTION, ELEGIBILITY_CODE, ELEGIBILITY_DESCRIPTION, AUDIT_TYPE, 
-                         PRODUCT_STATUS_CODE, PRODUCT_STATUS_CODE_DES, OPINION_CODE, OPINION_CODE_DESCRIPTION, AUDIT_HOURS, AUDIT_COST, AUDIT_COST_CURRENCY, OBSERVATION_DESCRIPTION
-FROM            LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
+  FISCAL_YEAR,
+  AUDITOR_TYPE_CD,
+  AUDITOR_TYPE_DES,
+  CAST(TRIM(INSTITUTION_CODE) AS NVARCHAR2(50)) INSTITUTION_CODE,
+  INSTITUTION_CODE_DESCRIPTION,
+  ELEGIBILITY_CODE,
+  ELEGIBILITY_DESCRIPTION,
+  AUDIT_TYPE,
+  PRODUCT_STATUS_CODE,
+  PRODUCT_STATUS_CODE_DES,
+  OPINION_CODE,
+  OPINION_CODE_DESCRIPTION,
+  AUDIT_HOURS,
+  AUDIT_COST,
+  AUDIT_COST_CURRENCY,
+  OBSERVATION_DESCRIPTION,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,1) DOCUMENT1,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,2) DOCUMENT2,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,3) DOCUMENT3,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,4) DOCUMENT4,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,5) DOCUMENT5,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,6) DOCUMENT6,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,7) DOCUMENT7,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,8) DOCUMENT8,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) DOCUMENT9,
+  REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) DOCUMENT10
+FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -566,6 +776,106 @@ FROM            LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OBSERVATION_DESCRIPTION]"
                       name="OBSERVATION_DESCRIPTION"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT1]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT1]"
+                      name="DOCUMENT1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT2]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT2]"
+                      name="DOCUMENT2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT3]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT3]"
+                      name="DOCUMENT3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT4]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT4]"
+                      name="DOCUMENT4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT5]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT5]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT5]"
+                      name="DOCUMENT5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT6]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT6]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT6]"
+                      name="DOCUMENT6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT7]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT7]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT7]"
+                      name="DOCUMENT7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT8]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT8]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT8]"
+                      name="DOCUMENT8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT9]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT9]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT9]"
+                      name="DOCUMENT9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT10]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT10]"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT10]"
+                      name="DOCUMENT10"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -655,6 +965,56 @@ FROM            LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       dataType="wstr"
                       length="640"
                       name="OBSERVATION_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT1]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT1" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT2]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT2" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT3]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT3" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT4]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT4" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT5]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT5" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT6]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT6" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT7]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT7" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT8]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT8" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT9]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT9" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DOCUMENT10]"
+                      dataType="wstr"
+                      length="640"
+                      name="DOCUMENT10" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -766,6 +1126,66 @@ FROM            LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[OBSERVATION_DESCRIPTION]"
                       name="OBSERVATION_DESCRIPTION" />
                     <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT1]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT1]"
+                      name="DOCUMENT1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT2]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT2]"
+                      name="DOCUMENT2" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT3]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT3]"
+                      name="DOCUMENT3" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT4]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT4]"
+                      name="DOCUMENT4" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT5]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT5]"
+                      name="DOCUMENT5" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT6]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT6]"
+                      name="DOCUMENT6" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT7]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT7]"
+                      name="DOCUMENT7" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT8]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT8]"
+                      name="DOCUMENT8" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT9]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT9]"
+                      name="DOCUMENT9" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT10]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT10]"
+                      name="DOCUMENT10" />
+                    <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -796,14 +1216,14 @@ FROM            LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION) [refTable]
 where [refTable].[INSTITUTION_CODE] = ?</property>
                 <property
@@ -841,7 +1261,7 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[INSTITUTION_CODE]};</property>
+                  name="ParameterMap">#{Package\Migrate Data\57:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -956,14 +1376,14 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT) [refTable]
 where [refTable].[CONTRACT_NUMBER] = ?</property>
                 <property
@@ -1001,7 +1421,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[CONTRACT_NUMBER]};</property>
+                  name="ParameterMap">#{Package\Migrate Data\53:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1127,7 +1547,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1336,35 +1756,6 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Migrate Data\Row Count 1"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="Row Count 1">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::cnt</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\Migrate Data\Row Count 1.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Migrate Data\Row Count 1.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\Migrate Data\Row Count 1.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -1374,9 +1765,14 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               startId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Migrate Data.Paths[Derived Column Output1]"
-              endId="Package\Migrate Data\AUDITOR Exceptions.Inputs[OLE DB Destination Input]"
+              endId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Migrate Data\Label AUDITOR.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Derived Column Output2]"
+              endId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output]"
               endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
@@ -1389,14 +1785,14 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup No Match Output]"
-              endId="Package\Migrate Data\Row Count 1.Inputs[Row Count Input 1]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
               endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
+              endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[OLE DB Source Output]"
               endId="Package\Migrate Data\Lookup CONTRACT.Inputs[Lookup Input]"
@@ -1407,13 +1803,13 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Postprocess"
+      DTS:refId="Package\Postprocessing"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{FCAD9960-59CB-4529-9526-264CF965BFE8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Postprocess"
+      DTS:ObjectName="Postprocessing"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -1422,13 +1818,29 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           SQLTask:SqlStatementSource="IF (SELECT COUNT(*) FROM TMP_MIGR_EXT_AUD)=0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preprocessing"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0C507D8B-0059-4CD4-9439-9F8D3D3568E0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preprocessing"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
+          SQLTask:SqlStatementSource="DELETE FROM EXTERNAL_AUDIT&#xA;GO&#xA;IF OBJECT_ID('TMP_MIGR_EXT_AUD') IS NOT NULL &#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;GO&#xA;CREATE TABLE TMP_MIGR_EXT_AUD (&#xA;&#x9;VALUE_NAME nvarchar(50),&#xA;&#x9;VALUE nvarchar(50)&#xA;)&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{322F028C-177D-4ED4-BF23-34B83E7E0202}"
-      DTS:From="Package\Clean Target Tables"
+      DTS:From="Package\Preprocessing"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Migrate Data" />
@@ -1439,7 +1851,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       DTS:From="Package\Migrate Data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Postprocess" />
+      DTS:To="Package\Postprocessing" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1454,27 +1866,31 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="179,42"
-          Id="Package\Clean Target Tables"
-          TopLeft="112,12" />
+          Size="144,42"
+          Id="Package\Preprocessing"
+          TopLeft="123.944444444444,37" />
         <NodeLayout
           Size="142,42"
           Id="Package\Migrate Data"
           TopLeft="126,145" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Postprocessing"
+          TopLeft="123,259" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="199.25,54">
+          TopLeft="196.472222222222,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,91"
+              EndConnector="0,66"
               Start="0,0"
-              End="0,83.5">
+              End="0,58.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,83.5" />
+                    End="0,58.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1483,13 +1899,9 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Postprocess"
-          TopLeft="123,259" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="195,187">
+          TopLeft="197.25,187">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1516,11 +1928,19 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     design-time-name="Package\Migrate Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139,42"
-          Id="Package\Migrate Data\LMS Source"
-          TopLeft="80,21" />
+          Size="158,42"
+          Id="Package\Migrate Data\Label AUDITOR"
+          TopLeft="443,194" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Migrate Data\Lookup CONTRACT"
+          TopLeft="73,100" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Derived Column"
+          TopLeft="86,431" />
         <NodeLayout
           Size="168,42"
           Id="Package\Migrate Data\Lookup AUDITOR"
@@ -1530,72 +1950,30 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           Id="Package\Migrate Data\OLE DB Destination"
           TopLeft="416,762" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Migrate Data\Row Count 1"
-          TopLeft="457,103" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Derived Column"
-          TopLeft="86,431" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Migrate Data\Lookup CONTRACT"
-          TopLeft="73,100" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[OLE DB Source Output]"
-          TopLeft="149.5,63">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="13,37"
-              Start="0,0"
-              End="13,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5"
-                    Point2="0,18.5"
-                    Point3="4,18.5" />
-                  <mssgle:LineSegment
-                    End="9,18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9,18.5"
-                    Point2="13,18.5"
-                    Point3="13,22.5" />
-                  <mssgle:LineSegment
-                    End="13,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="176.5,42"
+          Id="Package\Migrate Data\AUDITOR Not Found"
+          TopLeft="739,192" />
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output]"
-          TopLeft="252,122.5">
+          TopLeft="249,217">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="205,0"
+              EndConnector="194,0"
               Start="0,0"
-              End="197.5,0">
+              End="186.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="197.5,0" />
+                    End="186.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="42.94361328125,5,111.6127734375,11.609375"
+              BoundingBox="37.44361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1621,6 +1999,28 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output1]"
+          TopLeft="601,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138,0"
+              Start="0,0"
+              End="130.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="130.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1657,6 +2057,86 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Migrate Data\Label CONTRACT"
+          TopLeft="438,104.833333333333" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="252,123.416666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,0"
+              Start="0,0"
+              End="178.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="178.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output2]"
+          TopLeft="598,124.583333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.166666666667,0"
+              Start="0,0"
+              End="131.666666666667,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="131.666666666667,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Migrate Data\LMS Source"
+          TopLeft="96.3333333333334,12.1666666666667" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[OLE DB Source Output]"
+          TopLeft="162.916666666667,54.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.8333333333333"
+              Start="0,0"
+              End="0,38.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output1]"
           TopLeft="165,240">
@@ -1681,73 +2161,29 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Label AUDITOR"
-          TopLeft="443,194" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
-          TopLeft="249,217">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="194,0"
-              Start="0,0"
-              End="186.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="186.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="37.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Migrate Data\AUDITOR Exceptions"
-          TopLeft="739,192" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Derived Column Output1]"
-          TopLeft="601,214">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="138,0"
-              Start="0,0"
-              End="130.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="130.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\LMS Source">
+    design-time-name="Package\Migrate Data\Lookup CONTRACT">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1788,30 +2224,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup CONTRACT">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\AUDITOR Exceptions">
+    design-time-name="Package\Migrate Data\AUDITOR Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1820,6 +2233,27 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\LMS Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
