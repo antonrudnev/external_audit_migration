@@ -7,23 +7,25 @@
   DTS:CreatorName="DESKTOP-Q9PC6LV\Olga"
   DTS:DTSID="{1E86412F-F4BC-4E54-BC9B-37C139E21925}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{13FFECB4-56CD-4F13-A6FA-4E83D17B87D0}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{0B6C5168-6C75-4894-9DA6-8FD2890F26F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AABA76DC-E177-4216-9D1B-3E69C2026B1D}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:DTSID="{A5A6403E-6CC9-44FA-9624-F4CADB3C70D8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="cnt">
+      DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
+        DTS:DataType="7">12/10/2018 10:54:10 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -67,7 +69,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -194,7 +196,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -341,6 +343,95 @@
                           name="FriendlyExpression">2</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]"
+                      name="EXTERNAL_AUDIT_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED]"
+                      name="CREATED"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::Created]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::Created]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]"
+                      name="CREATED_BY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Project::CreatedBy]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Project::CreatedBy]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[DOCUMENT_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[DOCUMENT_ID]"
+                      name="DOCUMENT_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -362,6 +453,591 @@
                       refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Drop rows without documents"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Drop rows without documents"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input].Columns[DOCUMENT_N]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DOCUMENT_N"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_N]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Drop rows without documents.Outputs[With documents]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="With documents"
+                  synchronousInputId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_N]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(DOCUMENT_N)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Drop rows without documents.Outputs[Without documents]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Without documents"
+                  synchronousInputId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Insert DOCUMENT"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Insert DOCUMENT"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO DOCUMENT (
+	DOCUMENT_REFERENCE
+	,CREATED
+	,CREATED_BY
+	,IS_ACTIVE
+	,IS_AUTHORIZED
+	,IS_FOR_PUBLICATION) VALUES(?,?,?,1,0,0);
+DECLARE @DOCUMENT_ID INT = SCOPE_IDENTITY();
+SELECT ? = @DOCUMENT_ID;
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Insert DOCUMENT.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].Columns[DOCUMENT_REFERENCE]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT_REFERENCE"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].Columns[CREATED]"
+                      cachedDataType="date"
+                      cachedName="CREATED"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].Columns[CREATED_BY]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="CREATED_BY"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED_BY]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].Columns[DOCUMENT_ID]"
+                      cachedDataType="i4"
+                      cachedName="DOCUMENT_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="nText"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">193</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbTimeStamp"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="nText"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">193</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert DOCUMENT_EXT_AUDIT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DOCUMENT_EXT_AUDIT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].Columns[DOCUMENT_ID]"
+                      cachedDataType="i4"
+                      cachedName="DOCUMENT_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_DOCUMENT_ID]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].Columns[EXTERNAL_AUDIT_ID]"
+                      cachedDataType="i4"
+                      cachedName="EXTERNAL_AUDIT_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_EXTERNAL_AUDIT_ID]"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[EXTERNAL_AUDIT_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_DOCUMENT_ID]"
+                      dataType="i4"
+                      name="FK_DOCUMENT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_EXTERNAL_AUDIT_ID]"
+                      dataType="i4"
+                      name="FK_EXTERNAL_AUDIT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_DOCUMENT_TYPE_CODE_ID]"
+                      dataType="i4"
+                      name="FK_DOCUMENT_TYPE_CODE_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Insert EXTERNAL_AUDIT"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO EXTERNAL_AUDIT (
+	FK_CONTRACT_ID
+	,FISCAL_YEAR
+	,FK_AUDITOR_ID
+	,FK_PRODUCT_STATUS_ID
+	,CREATED
+	,CREATED_BY) VALUES (?,?,?,?,?,?);
+
+DECLARE @EXTERNAL_AUDIT_ID INT = SCOPE_IDENTITY();
+
+SELECT ? = @EXTERNAL_AUDIT_ID; </property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[CONTRACT_ID]"
+                      cachedDataType="i4"
+                      cachedName="CONTRACT_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output].Columns[CONTRACT_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[FISCAL_YEAR]"
+                      cachedDataType="numeric"
+                      cachedName="FISCAL_YEAR"
+                      cachedPrecision="4"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[FISCAL_YEAR]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_ID]"
+                      cachedDataType="i4"
+                      cachedName="AUDITOR_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output].Columns[AUDITOR_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[PRODUCT_STATUS_ID]"
+                      cachedDataType="i4"
+                      cachedName="PRODUCT_STATUS_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[PRODUCT_STATUS_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[CREATED]"
+                      cachedDataType="date"
+                      cachedName="CREATED"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[CREATED_BY]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="CREATED_BY"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[EXTERNAL_AUDIT_ID]"
+                      cachedDataType="i4"
+                      cachedName="EXTERNAL_AUDIT_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="dbTimeStamp"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -542,7 +1218,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
   FISCAL_YEAR,
   AUDITOR_TYPE_CD,
   AUDITOR_TYPE_DES,
@@ -1216,14 +1892,14 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION) [refTable]
 where [refTable].[INSTITUTION_CODE] = ?</property>
                 <property
@@ -1261,7 +1937,7 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\57:invalid};</property>
+                  name="ParameterMap">#{Package\Migrate Data\Insert EXTERNAL_AUDIT};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1376,14 +2052,14 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT) [refTable]
 where [refTable].[CONTRACT_NUMBER] = ?</property>
                 <property
@@ -1421,7 +2097,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\53:invalid};</property>
+                  name="ParameterMap">#{Package\Migrate Data\273:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1523,234 +2199,364 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Migrate Data\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[EXTERNAL_AUDIT]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Migrate Data\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
+              refId="Package\Migrate Data\Unpivot by DOCUMENT"
+              componentClassID="Microsoft.UnPivot"
+              contactInfo="Unpivot;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Expands an un-normalized data flow into a more normalized version. Values from multiple columns of a single record expand to multiple records in a single column. For example, expand a table that lists athletic scores with a column for each game to more records and a single score column."
+              name="Unpivot by DOCUMENT">
               <inputs>
                 <input
-                  refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input]"
                   hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  name="Unpivot Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FISCAL_YEAR]"
-                      cachedDataType="numeric"
-                      cachedName="FISCAL_YEAR"
-                      cachedPrecision="4"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FISCAL_YEAR]"
-                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[FISCAL_YEAR]" />
-                    <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUDIT_HOURS]"
-                      cachedDataType="numeric"
-                      cachedName="AUDIT_HOURS"
-                      cachedPrecision="4"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDIT_HOURS]"
-                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDIT_HOURS]" />
-                    <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBSERVATION_DESCRIPTION]"
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT1]"
                       cachedDataType="wstr"
                       cachedLength="640"
-                      cachedName="OBSERVATION_DESCRIPTION"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBSERVATION_DESCRIPTION]"
-                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OBSERVATION_DESCRIPTION]" />
+                      cachedName="DOCUMENT1"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT1</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CONTRACT_ID]"
-                      cachedDataType="i4"
-                      cachedName="CONTRACT_ID"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_CONTRACT_ID]"
-                      lineageId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output].Columns[CONTRACT_ID]" />
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT2]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT2"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT2</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUDITOR_ID]"
-                      cachedDataType="i4"
-                      cachedName="AUDITOR_ID"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_AUDITOR_ID]"
-                      lineageId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output].Columns[AUDITOR_ID]" />
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT3]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT3"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT3]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT3</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PRODUCT_STATUS_ID]"
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT4]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT4"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT4]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT5]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT5"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT5]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT6]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT6"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT6]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT7]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT7"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT7]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT8]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT8"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT8]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT8</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT9]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT9"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT9]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT9</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT10]"
+                      cachedDataType="wstr"
+                      cachedLength="640"
+                      cachedName="DOCUMENT10"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DOCUMENT10]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">DOCUMENT10</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[EXTERNAL_AUDIT_ID]"
                       cachedDataType="i4"
-                      cachedName="PRODUCT_STATUS_ID"
-                      externalMetadataColumnId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_PRODUCT_STATUS_ID]"
-                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[PRODUCT_STATUS_ID]" />
+                      cachedName="EXTERNAL_AUDIT_ID"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[EXTERNAL_AUDIT_ID]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[CREATED]"
+                      cachedDataType="date"
+                      cachedName="CREATED"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[CREATED_BY]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="CREATED_BY"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED_BY]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input].Columns[DOCUMENT_ID]"
+                      cachedDataType="i4"
+                      cachedName="DOCUMENT_ID"
+                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[DOCUMENT_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_ID]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EXTERNAL_AUDIT_ID]"
-                      dataType="i4"
-                      name="EXTERNAL_AUDIT_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_CONTRACT_ID]"
-                      dataType="i4"
-                      name="FK_CONTRACT_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FISCAL_YEAR]"
-                      dataType="wstr"
-                      length="50"
-                      name="FISCAL_YEAR" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_AUDITOR_ID]"
-                      dataType="i4"
-                      name="FK_AUDITOR_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_AUDIT_TYPE_ID]"
-                      dataType="i4"
-                      name="FK_AUDIT_TYPE_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_ELIGIBILITY_LEVEL_ID]"
-                      dataType="i4"
-                      name="FK_ELIGIBILITY_LEVEL_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_PRODUCT_STATUS_ID]"
-                      dataType="i4"
-                      name="FK_PRODUCT_STATUS_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_OBSERVATION_TYPE_ID]"
-                      dataType="i4"
-                      name="FK_OBSERVATION_TYPE_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ISSUE_DATE]"
-                      dataType="dbTimeStamp"
-                      name="ISSUE_DATE" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SUBMISSION_DATE]"
-                      dataType="dbTimeStamp"
-                      name="SUBMISSION_DATE" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CUT_OFF_DATE]"
-                      dataType="dbTimeStamp"
-                      name="CUT_OFF_DATE" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_OPINION_ID]"
-                      dataType="i4"
-                      name="FK_OPINION_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OPINION_DESCRIPTION]"
-                      dataType="wstr"
-                      length="200"
-                      name="OPINION_DESCRIPTION" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FK_RATING_ID]"
-                      dataType="i4"
-                      name="FK_RATING_ID" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDIT_HOURS]"
-                      dataType="i4"
-                      name="AUDIT_HOURS" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBSERVATION_DESCRIPTION]"
-                      dataType="nText"
-                      name="OBSERVATION_DESCRIPTION" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IS_FINAL_AUDIT]"
-                      dataType="bool"
-                      name="IS_FINAL_AUDIT" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DISABLE_NOTIFICATIONS]"
-                      dataType="bool"
-                      name="DISABLE_NOTIFICATIONS" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CREATED]"
-                      dataType="dbTimeStamp"
-                      name="CREATED" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CREATED_BY]"
-                      dataType="wstr"
-                      length="50"
-                      name="CREATED_BY" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED]"
-                      dataType="dbTimeStamp"
-                      name="MODIFIED" />
-                    <externalMetadataColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED_BY]"
-                      dataType="wstr"
-                      length="50"
-                      name="MODIFIED_BY" />
-                  </externalMetadataColumns>
+                  <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Migrate Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output]"
+                  name="Unpivot Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Migrate Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_N]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_N]"
+                      name="DOCUMENT_N">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">true</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Migrate Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]"
+                      dataType="wstr"
+                      length="640"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_REFERENCE]"
+                      name="DOCUMENT_REFERENCE">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[EXTERNAL_AUDIT_ID]"
                       dataType="i4"
-                      lineageId="Package\Migrate Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[EXTERNAL_AUDIT_ID]"
+                      name="EXTERNAL_AUDIT_ID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED]"
+                      dataType="date"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED]"
+                      name="CREATED">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED_BY]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[CREATED_BY]"
+                      name="CREATED_BY">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_ID]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output].Columns[DOCUMENT_ID]"
+                      name="DOCUMENT_ID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1760,19 +2566,19 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           <paths>
             <path
               refId="Package\Migrate Data.Paths[Derived Column Output]"
-              endId="Package\Migrate Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Derived Column Output1]"
               endId="Package\Migrate Data\AUDITOR Not Found.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Migrate Data\Label AUDITOR.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Derived Column Output2]"
+              refId="Package\Migrate Data.Paths[Derived Column Output1]"
               endId="Package\Migrate Data\CONTRACT Not Found.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Migrate Data\Label CONTRACT.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Derived Column Output2]"
+              endId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output]"
               endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
@@ -1794,10 +2600,30 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
             <path
+              refId="Package\Migrate Data.Paths[OLE DB Command Output]"
+              endId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input]"
+              name="OLE DB Command Output"
+              startId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[OLE DB Command Output1]"
+              endId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Command Output"
+              startId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Output]" />
+            <path
               refId="Package\Migrate Data.Paths[OLE DB Source Output]"
               endId="Package\Migrate Data\Lookup CONTRACT.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Unpivot Output]"
+              endId="Package\Migrate Data\Drop rows without documents.Inputs[Conditional Split Input]"
+              name="Unpivot Output"
+              startId="Package\Migrate Data\Unpivot by DOCUMENT.Outputs[Unpivot Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[With documents]"
+              endId="Package\Migrate Data\Insert DOCUMENT.Inputs[OLE DB Command Input]"
+              name="With documents"
+              startId="Package\Migrate Data\Drop rows without documents.Outputs[With documents]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1815,7 +2641,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
-          SQLTask:SqlStatementSource="IF (SELECT COUNT(*) FROM TMP_MIGR_EXT_AUD)=0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF (SELECT COUNT(*) FROM TMP_MIGR_EXT_AUD)=0&#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1831,7 +2657,14 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
-          SQLTask:SqlStatementSource="DELETE FROM EXTERNAL_AUDIT&#xA;GO&#xA;IF OBJECT_ID('TMP_MIGR_EXT_AUD') IS NOT NULL &#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;GO&#xA;CREATE TABLE TMP_MIGR_EXT_AUD (&#xA;&#x9;VALUE_NAME nvarchar(50),&#xA;&#x9;VALUE nvarchar(50)&#xA;)&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM DOCUMENT_EXT_AUDIT;&#xA;DELETE FROM EXTERNAL_AUDIT;&#xA;DELETE FROM DOCUMENT WHERE CREATED_BY=?;&#xA;&#xA;IF OBJECT_ID('TMP_MIGR_EXT_AUD') IS NOT NULL &#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;&#xA;CREATE TABLE TMP_MIGR_EXT_AUD (&#xA;&#x9;VALUE_NAME nvarchar(50),&#xA;&#x9;VALUE nvarchar(50)&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Project::CreatedBy"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="50" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1866,10 +2699,6 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,42"
-          Id="Package\Preprocessing"
-          TopLeft="123.944444444444,37" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Migrate Data"
           TopLeft="126,145" />
@@ -1877,6 +2706,10 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           Size="149,42"
           Id="Package\Postprocessing"
           TopLeft="123,259" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Preprocessing"
+          TopLeft="123.944444444444,37" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="196.472222222222,79">
@@ -1930,29 +2763,87 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Label AUDITOR"
-          TopLeft="443,194" />
-        <NodeLayout
           Size="179,42"
           Id="Package\Migrate Data\Lookup CONTRACT"
           TopLeft="73,100" />
         <NodeLayout
+          Size="207,42"
+          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+          TopLeft="64.7142857142857,408.142857142857" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Migrate Data\Derived Column"
-          TopLeft="86,431" />
+          TopLeft="84.5714285714286,311.142857142857" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Migrate Data\LMS Source"
+          TopLeft="96.3333333333334,12.1666666666667" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Label AUDITOR"
+          TopLeft="443,194" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
         <NodeLayout
           Size="168,42"
           Id="Package\Migrate Data\Lookup AUDITOR"
           TopLeft="81,198" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\Migrate Data\OLE DB Destination"
-          TopLeft="416,762" />
-        <NodeLayout
-          Size="176.5,42"
+          Size="176,42"
           Id="Package\Migrate Data\AUDITOR Not Found"
           TopLeft="739,192" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Migrate Data\Label CONTRACT"
+          TopLeft="438,104.833333333333" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[OLE DB Source Output]"
+          TopLeft="162.916666666667,54.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.8333333333333"
+              Start="0,0"
+              End="0,38.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="252,123.416666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,0"
+              Start="0,0"
+              End="178.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="178.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output]"
           TopLeft="249,217">
@@ -1974,6 +2865,30 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="37.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          TopLeft="164.285714285714,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.142857142857"
+              Start="0,0"
+              End="0,63.642857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.642857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,26.0167410714285,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2002,95 +2917,29 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Derived Column Output1]"
-          TopLeft="601,214">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="138,0"
-              Start="0,0"
-              End="130.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="130.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Derived Column Output]"
-          TopLeft="165,473">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="339.5,289"
-              Start="0,0"
-              End="339.5,281.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,140.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,140.5"
-                    Point2="0,144.5"
-                    Point3="4,144.5" />
-                  <mssgle:LineSegment
-                    End="335.5,144.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="335.5,144.5"
-                    Point2="339.5,144.5"
-                    Point3="339.5,148.5" />
-                  <mssgle:LineSegment
-                    End="339.5,281.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Migrate Data\Label CONTRACT"
-          TopLeft="438,104.833333333333" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
-          TopLeft="252,123.416666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="186,0"
-              Start="0,0"
-              End="178.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="178.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Migrate Data\CONTRACT Not Found"
-          TopLeft="737.166666666667,102.333333333333" />
-        <EdgeLayout
           Id="Package\Migrate Data.Paths[Derived Column Output2]"
+          TopLeft="165.892857142857,353.142857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output1]"
           TopLeft="598,124.583333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2111,24 +2960,20 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Migrate Data\LMS Source"
-          TopLeft="96.3333333333334,12.1666666666667" />
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[OLE DB Source Output]"
-          TopLeft="162.916666666667,54.1666666666667">
+          Id="Package\Migrate Data.Paths[Derived Column Output]"
+          TopLeft="601,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45.8333333333333"
+              EndConnector="138,0"
               Start="0,0"
-              End="0,38.3333333333333">
+              End="130.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.3333333333333" />
+                    End="130.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2137,28 +2982,110 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Migrate Data\Unpivot by DOCUMENT"
+          TopLeft="72,497" />
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
-          TopLeft="165,240">
+          Id="Package\Migrate Data.Paths[OLE DB Command Output]"
+          TopLeft="169.357142857143,450.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,191"
+              EndConnector="0,46.857142857143"
               Start="0,0"
-              End="0,183.5">
+              End="0,39.357142857143">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,183.5" />
+                    End="0,39.357142857143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Migrate Data\Drop rows without documents"
+          TopLeft="61,599" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Unpivot Output]"
+          TopLeft="171.75,539">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Migrate Data\Insert DOCUMENT"
+          TopLeft="82,692" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[With documents]"
+          TopLeft="170.75,641">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,85.9453125,96.3827734375,11.609375"
+              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
+          TopLeft="50,787" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[OLE DB Command Output1]"
+          TopLeft="169.25,734">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2188,6 +3115,27 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\LMS Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\Lookup AUDITOR">
     <Properties>
       <Property>
@@ -2211,19 +3159,6 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\AUDITOR Not Found">
     <Properties>
       <Property>
@@ -2237,7 +3172,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2246,14 +3181,6 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\LMS Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
