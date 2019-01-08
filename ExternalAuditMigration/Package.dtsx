@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{0B6C5168-6C75-4894-9DA6-8FD2890F26F2}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{06169153-D066-41F0-B64B-8E5BD0D3833F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">12/10/2018 10:54:10 PM</DTS:VariableValue>
+        DTS:DataType="7">1/8/2019 1:12:39 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -164,6 +164,133 @@
                       refId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Migrate Data\AUDITOR Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\AUDITOR TYPE Not Found"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AUDITOR TYPE Not Found"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TMP_MIGR_EXT_AUD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\AUDITOR TYPE Not Found.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="VALUE_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      lineageId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].Columns[AUDITOR_TYPE_CD]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="AUDITOR_TYPE_CD"
+                      externalMetadataColumnId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\AUDITOR TYPE Not Found.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\AUDITOR TYPE Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\AUDITOR TYPE Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\AUDITOR TYPE Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -321,28 +448,6 @@
                   name="Derived Column Output"
                   synchronousInputId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[PRODUCT_STATUS_ID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[PRODUCT_STATUS_ID]"
-                      name="PRODUCT_STATUS_ID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">2</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">2</property>
-                      </properties>
-                    </outputColumn>
                     <outputColumn
                       refId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]"
                       dataType="i4"
@@ -543,6 +648,133 @@
                       refId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Migrate Data\Drop rows without documents.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\ELIGIBILITY Not Found"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ELIGIBILITY Not Found"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TMP_MIGR_EXT_AUD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\ELIGIBILITY Not Found.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="VALUE_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      lineageId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].Columns[ELEGIBILITY_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ELEGIBILITY_CODE"
+                      externalMetadataColumnId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\ELIGIBILITY Not Found.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\ELIGIBILITY Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\ELIGIBILITY Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\ELIGIBILITY Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -858,7 +1090,10 @@ SELECT ? = @DOCUMENT_ID;
 	,FK_AUDITOR_ID
 	,FK_PRODUCT_STATUS_ID
 	,CREATED
-	,CREATED_BY) VALUES (?,?,?,?,?,?);
+	,CREATED_BY
+                ,FK_AUDITOR_TYPE_ID
+                ,FK_ELIGIBILITY_LEVEL_ID
+                ,FK_OPINION_ID) VALUES (?,?,?,?,?,?,?,?,?);
 
 DECLARE @EXTERNAL_AUDIT_ID INT = SCOPE_IDENTITY();
 
@@ -908,7 +1143,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       cachedDataType="i4"
                       cachedName="PRODUCT_STATUS_ID"
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[PRODUCT_STATUS_ID]" />
+                      lineageId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output].Columns[PRODUCT_STATUS_ID]" />
                     <inputColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[CREATED]"
                       cachedDataType="date"
@@ -923,10 +1158,28 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]" />
                     <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_TYPE_ID]"
+                      cachedDataType="i4"
+                      cachedName="AUDITOR_TYPE_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[ELIGIBILITY_ID]"
+                      cachedDataType="i4"
+                      cachedName="ELIGIBILITY_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[OPINION_ID]"
+                      cachedDataType="i4"
+                      cachedName="OPINION_ID"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output].Columns[OPINION_ID]" />
+                    <inputColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[EXTERNAL_AUDIT_ID]"
                       cachedDataType="i4"
                       cachedName="EXTERNAL_AUDIT_ID"
-                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -1003,6 +1256,39 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       dataType="i4"
                       name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="i4"
+                      name="Param_9">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1120,6 +1406,80 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
               </outputs>
             </component>
             <component
+              refId="Package\Migrate Data\Label AUDITOR TYPE"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Label AUDITOR TYPE"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      name="VALUE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"AUDITOR TYPE"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"AUDITOR TYPE"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Migrate Data\Label CONTRACT"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1194,6 +1554,228 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
               </outputs>
             </component>
             <component
+              refId="Package\Migrate Data\Label ELIGIBILITY"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Label ELIGIBILITY"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Label ELIGIBILITY.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Migrate Data\Label ELIGIBILITY.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      name="VALUE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"ELIGIBILITY"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"ELIGIBILITY"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Migrate Data\Label ELIGIBILITY.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Label OPINION"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Label OPINION"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Label OPINION.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Migrate Data\Label OPINION.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      name="VALUE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"OPINION"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"OPINION"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Migrate Data\Label OPINION.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Label PRODUCT_STATUS"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Label PRODUCT_STATUS"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output].Columns[VALUE_NAME]"
+                      name="VALUE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"PRODUCT_STATUS"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"PRODUCT_STATUS"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Migrate Data\LMS Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -1220,16 +1802,40 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
   FISCAL_YEAR,
-  AUDITOR_TYPE_CD,
+  CASE AUDITOR_TYPE_CD
+    WHEN 'GA' THEN 'SAI'
+    WHEN 'EA' THEN 'IAF'
+    WHEN 'FI' THEN 'FI'
+  ELSE AUDITOR_TYPE_CD END AUDITOR_TYPE_CD,
   AUDITOR_TYPE_DES,
   CAST(TRIM(INSTITUTION_CODE) AS NVARCHAR2(50)) INSTITUTION_CODE,
   INSTITUTION_CODE_DESCRIPTION,
-  ELEGIBILITY_CODE,
+  CASE ELEGIBILITY_CODE
+    WHEN 'LE' THEN 'ELG'
+    WHEN 'GE' THEN 'ELG+'
+    WHEN 'NE' THEN 'NE'
+    WHEN 'RE' THEN 'RE'
+  ELSE ELEGIBILITY_CODE END ELEGIBILITY_CODE,
   ELEGIBILITY_DESCRIPTION,
   AUDIT_TYPE,
-  PRODUCT_STATUS_CODE,
+  CASE PRODUCT_STATUS_CODE
+    WHEN 'ANALYZED' THEN 'ANY'
+    WHEN 'WAIVED' THEN 'WA'
+    WHEN 'RECEIVED' THEN 'REC'
+    WHEN 'CONTRACTED' THEN 'SC'
+    WHEN 'EXTENDED' THEN 'EX'
+  ELSE PRODUCT_STATUS_CODE END PRODUCT_STATUS_CODE,
   PRODUCT_STATUS_CODE_DES,
-  OPINION_CODE,
+  CASE OPINION_CODE
+    WHEN 'LI' THEN 'CLE'
+    WHEN 'Q' THEN 'QOP'
+    WHEN 'AB' THEN 'DIO'
+    WHEN 'CM' THEN 'CM'
+    WHEN 'U' THEN 'CLE'
+    WHEN 'AD' THEN 'ADO'
+    WHEN 'SA' THEN 'QOP'
+    WHEN 'DO' THEN 'DO'
+  ELSE OPINION_CODE END OPINION_CODE,
   OPINION_CODE_DESCRIPTION,
   AUDIT_HOURS,
   AUDIT_COST,
@@ -1307,7 +1913,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_CD]"
-                      length="2"
+                      length="3"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]"
                       name="AUDITOR_TYPE_CD"
                       truncationRowDisposition="FailComponent" />
@@ -1347,7 +1953,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[ELEGIBILITY_CODE]"
-                      length="2"
+                      length="4"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]"
                       name="ELEGIBILITY_CODE"
                       truncationRowDisposition="FailComponent" />
@@ -1397,7 +2003,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[OPINION_CODE]"
-                      length="2"
+                      length="3"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OPINION_CODE]"
                       name="OPINION_CODE"
                       truncationRowDisposition="FailComponent" />
@@ -1568,7 +2174,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_CD]"
                       dataType="wstr"
-                      length="2"
+                      length="3"
                       name="AUDITOR_TYPE_CD" />
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_DES]"
@@ -1588,7 +2194,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[ELEGIBILITY_CODE]"
                       dataType="wstr"
-                      length="2"
+                      length="4"
                       name="ELEGIBILITY_CODE" />
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[ELEGIBILITY_DESCRIPTION]"
@@ -1613,7 +2219,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[OPINION_CODE]"
                       dataType="wstr"
-                      length="2"
+                      length="3"
                       name="OPINION_CODE" />
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[OPINION_CODE_DESCRIPTION]"
@@ -1713,7 +2319,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[AUDITOR_TYPE_CD]"
                       dataType="wstr"
-                      length="2"
+                      length="3"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[AUDITOR_TYPE_CD]"
                       name="AUDITOR_TYPE_CD" />
                     <outputColumn
@@ -1737,7 +2343,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[ELEGIBILITY_CODE]"
                       dataType="wstr"
-                      length="2"
+                      length="4"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[ELEGIBILITY_CODE]"
                       name="ELEGIBILITY_CODE" />
                     <outputColumn
@@ -1767,7 +2373,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[OPINION_CODE]"
                       dataType="wstr"
-                      length="2"
+                      length="3"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[OPINION_CODE]"
                       name="OPINION_CODE" />
                     <outputColumn
@@ -2039,6 +2645,172 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Migrate Data\Lookup AUDITOR_TYPE"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup AUDITOR_TYPE"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE  AS AUDITOR_TYPE_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE  AS AUDITOR_TYPE_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE') [refTable]
+where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AUDITOR_TYPE_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AUDITOR_TYPE_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input].Columns[AUDITOR_TYPE_CD]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="AUDITOR_TYPE_CD"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AUDITOR_TYPE_CODE</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_ID]"
+                      name="AUDITOR_TYPE_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AUDITOR_TYPE_ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Migrate Data\Lookup CONTRACT"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -2097,7 +2869,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\273:invalid};</property>
+                  name="ParameterMap">#{Package\Migrate Data\Lookup AUDITOR_TYPE};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2191,6 +2963,758 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                       refId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Lookup ELIGIBILITY"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup ELIGIBILITY"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS ELIGIBILITY_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_LEVEL_ELIGIBILITY_TYPE'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS ELIGIBILITY_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_LEVEL_ELIGIBILITY_TYPE') [refTable]
+where [refTable].[ELIGIBILITY_CODE] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ELIGIBILITY_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ELIGIBILITY_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Lookup ELIGIBILITY.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input].Columns[ELEGIBILITY_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ELEGIBILITY_CODE"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ELIGIBILITY_CODE</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_ID]"
+                      name="ELIGIBILITY_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ELIGIBILITY_ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Lookup OPINION"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup OPINION"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS OPINION_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS OPINION_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_AUDIT_OPN'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS OPINION_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS OPINION_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_AUDIT_OPN') [refTable]
+where [refTable].[OPINION_CODE] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="OPINION_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OPINION_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OPINION_CODE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Lookup OPINION.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input].Columns[OPINION_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="OPINION_CODE"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OPINION_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OPINION_CODE</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output].Columns[OPINION_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output].Columns[OPINION_ID]"
+                      name="OPINION_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">OPINION_ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\Lookup PRODUCT_STATUS"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup PRODUCT_STATUS"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS PRODUCT_STATUS_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS PRODUCT_STATUS_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_PRODUCT_STATUS'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS PRODUCT_STATUS_CODE
+	,CONVERGENCE_MASTER_DATA_ID AS PRODUCT_STATUS_ID
+FROM CONVERGENCE_MASTER_TYPE
+JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
+WHERE TYPE = 'EXTERNAL_PRODUCT_STATUS') [refTable]
+where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PRODUCT_STATUS_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PRODUCT_STATUS_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[PRODUCT_STATUS_CODE]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input].Columns[PRODUCT_STATUS_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PRODUCT_STATUS_CODE"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[PRODUCT_STATUS_CODE]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PRODUCT_STATUS_CODE</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output].Columns[PRODUCT_STATUS_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output].Columns[PRODUCT_STATUS_ID]"
+                      name="PRODUCT_STATUS_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PRODUCT_STATUS_ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\OPINION Not Found"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OPINION Not Found"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TMP_MIGR_EXT_AUD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\OPINION Not Found.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="VALUE_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      lineageId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].Columns[OPINION_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="OPINION_CODE"
+                      externalMetadataColumnId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[OPINION_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\OPINION Not Found.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\OPINION Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\OPINION Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\OPINION Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrate Data\PRODUCT_STATUS Not Found"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PRODUCT_STATUS Not Found"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TMP_MIGR_EXT_AUD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Connections[OleDbConnection]"
+                  connectionManagerID="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Convergence]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].Columns[VALUE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="VALUE_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      lineageId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output].Columns[VALUE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].Columns[PRODUCT_STATUS_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PRODUCT_STATUS_CODE"
+                      externalMetadataColumnId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[PRODUCT_STATUS_CODE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE_NAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
+                      dataType="wstr"
+                      length="50"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\PRODUCT_STATUS Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\PRODUCT_STATUS Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrate Data\PRODUCT_STATUS Not Found.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2580,35 +4104,95 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
               name="Derived Column Output"
               startId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Migrate Data.Paths[Derived Column Output3]"
+              endId="Package\Migrate Data\ELIGIBILITY Not Found.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Label ELIGIBILITY.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Derived Column Output4]"
+              endId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Label AUDITOR TYPE.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Derived Column Output6]"
+              endId="Package\Migrate Data\OPINION Not Found.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Label OPINION.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Derived Column Output5]"
+              endId="Package\Migrate Data\PRODUCT_STATUS Not Found.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output3]"
+              endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
+              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output5]"
+              endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
+              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
+              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Migrate Data.Paths[Lookup Match Output]"
               endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
-              endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
-              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
               endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[OLE DB Command Output]"
-              endId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input]"
-              name="OLE DB Command Output"
-              startId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Output]" />
+              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
+              endId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[OLE DB Command Output1]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output4]"
+              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output5]"
+              endId="Package\Migrate Data\Label OPINION.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
+              endId="Package\Migrate Data\Label ELIGIBILITY.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
+              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[OLE DB Command Output]"
               endId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input]"
               name="OLE DB Command Output"
               startId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[OLE DB Command Output1]"
+              endId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input]"
+              name="OLE DB Command Output"
+              startId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Migrate Data.Paths[OLE DB Source Output]"
               endId="Package\Migrate Data\Lookup CONTRACT.Inputs[Lookup Input]"
@@ -2761,43 +4345,129 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     design-time-name="Package\Migrate Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Migrate Data\Lookup CONTRACT"
-          TopLeft="73,100" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
-          TopLeft="64.7142857142857,408.142857142857" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Derived Column"
-          TopLeft="84.5714285714286,311.142857142857" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Migrate Data\LMS Source"
-          TopLeft="96.3333333333334,12.1666666666667" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Label AUDITOR"
-          TopLeft="443,194" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Migrate Data\CONTRACT Not Found"
-          TopLeft="737.166666666667,102.333333333333" />
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,42"
           Id="Package\Migrate Data\Lookup AUDITOR"
           TopLeft="81,198" />
         <NodeLayout
+          Size="160,42"
+          Id="Package\Migrate Data\Label CONTRACT"
+          TopLeft="438,104.833333333333" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
+          TopLeft="60,1168" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Migrate Data\Lookup CONTRACT"
+          TopLeft="73,100" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Derived Column"
+          TopLeft="94.5714285714286,692.142857142857" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Migrate Data\Unpivot by DOCUMENT"
+          TopLeft="82,878" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Migrate Data\Label AUDITOR TYPE"
+          TopLeft="424,295" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
+          TopLeft="726,294" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Migrate Data\ELIGIBILITY Not Found"
+          TopLeft="724,396" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Label AUDITOR"
+          TopLeft="443,194" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+          TopLeft="74.7142857142857,789.142857142857" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Migrate Data\LMS Source"
+          TopLeft="96.3333333333334,12.1666666666667" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Migrate Data\Drop rows without documents"
+          TopLeft="71,980" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
+          TopLeft="69,298" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Migrate Data\Insert DOCUMENT"
+          TopLeft="92,1073" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Migrate Data\Label ELIGIBILITY"
+          TopLeft="422,397" />
+        <NodeLayout
           Size="176,42"
           Id="Package\Migrate Data\AUDITOR Not Found"
           TopLeft="739,192" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\Migrate Data\Label CONTRACT"
-          TopLeft="438,104.833333333333" />
+          Size="180,42"
+          Id="Package\Migrate Data\Lookup ELIGIBILITY"
+          TopLeft="83,398" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[With documents]"
+          TopLeft="180.75,1022">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Unpivot Output]"
+          TopLeft="181.75,920">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[OLE DB Source Output]"
           TopLeft="162.916666666667,54.1666666666667">
@@ -2821,31 +4491,51 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
-          TopLeft="252,123.416666666667">
+          Id="Package\Migrate Data.Paths[OLE DB Command Output1]"
+          TopLeft="179.357142857143,831.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="186,0"
+              EndConnector="0,46.857142857143"
               Start="0,0"
-              End="178.5,0">
+              End="0,39.357142857143">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="178.5,0" />
+                    End="0,39.357142857143" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          Id="Package\Migrate Data.Paths[OLE DB Command Output]"
+          TopLeft="179.25,1115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
           TopLeft="249,217">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2869,26 +4559,122 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
-          TopLeft="164.285714285714,240">
+          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
+          TopLeft="252,123.416666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.142857142857"
+              EndConnector="186,0"
               Start="0,0"
-              End="0,63.642857142857">
+              End="178.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.642857142857" />
+                    End="178.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,26.0167410714285,96.3827734375,11.609375"
+              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="263,418.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159,0"
+              Start="0,0"
+              End="151.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="151.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          TopLeft="271,317.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="153,0"
+              Start="0,0"
+              End="145.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="145.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="16.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
+          TopLeft="167.5,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          TopLeft="171.5,340">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2917,8 +4703,52 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output4]"
+          TopLeft="614,315.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,0"
+              Start="0,0"
+              End="104.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output3]"
+          TopLeft="593,417.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131,0"
+              Start="0,0"
+              End="123.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="123.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Migrate Data.Paths[Derived Column Output2]"
-          TopLeft="165.892857142857,353.142857142857">
+          TopLeft="175.892857142857,734.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2983,103 +4813,79 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="197,42"
-          Id="Package\Migrate Data\Unpivot by DOCUMENT"
-          TopLeft="72,497" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[OLE DB Command Output]"
-          TopLeft="169.357142857143,450.142857142857">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.857142857143"
-              Start="0,0"
-              End="0,39.357142857143">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.357142857143" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="237,42"
+          Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
+          TopLeft="708,497" />
         <NodeLayout
-          Size="224,42"
-          Id="Package\Migrate Data\Drop rows without documents"
-          TopLeft="61,599" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Unpivot Output]"
-          TopLeft="171.75,539">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="213,42"
+          Id="Package\Migrate Data\Label PRODUCT_STATUS"
+          TopLeft="408,497" />
         <NodeLayout
-          Size="173,42"
-          Id="Package\Migrate Data\Insert DOCUMENT"
-          TopLeft="82,692" />
+          Size="222,42"
+          Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
+          TopLeft="66,499" />
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[With documents]"
-          TopLeft="170.75,641">
+          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
+          TopLeft="175,440">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,43.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="240,42"
-          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
-          TopLeft="50,787" />
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[OLE DB Command Output1]"
-          TopLeft="169.25,734">
+          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
+          TopLeft="288,519">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53"
+              EndConnector="120,0"
               Start="0,0"
-              End="0,45.5">
+              End="112.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="112.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.443613281250002,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output5]"
+          TopLeft="621,518">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87,0"
+              Start="0,0"
+              End="79.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="79.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3088,53 +4894,115 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Migrate Data\OPINION Not Found"
+          TopLeft="731,597" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Migrate Data\Label OPINION"
+          TopLeft="429,598" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Migrate Data\Lookup OPINION"
+          TopLeft="90,599" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output5]"
+          TopLeft="254,619.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="175,0"
+              Start="0,0"
+              End="167.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="167.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="27.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Derived Column Output6]"
+          TopLeft="584,618.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147,0"
+              Start="0,0"
+              End="139.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="139.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
+          TopLeft="174.5,541">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output5]"
+          TopLeft="172.785714285714,641">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.142857142857"
+              Start="0,0"
+              End="0,43.642857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.642857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,16.0167410714285,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup CONTRACT">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\LMS Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\CONTRACT Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\Lookup AUDITOR">
     <Properties>
@@ -3159,6 +5027,112 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup CONTRACT">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\ELIGIBILITY Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\LMS Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\AUDITOR Not Found">
     <Properties>
       <Property>
@@ -3172,7 +5146,30 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
+    design-time-name="Package\Migrate Data\Lookup ELIGIBILITY">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\PRODUCT_STATUS Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3181,6 +5178,65 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup PRODUCT_STATUS">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\OPINION Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup OPINION">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
