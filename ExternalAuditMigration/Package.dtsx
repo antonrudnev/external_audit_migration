@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-Q9PC6LV\Olga"
   DTS:DTSID="{1E86412F-F4BC-4E54-BC9B-37C139E21925}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{9F98E02A-13D1-45EE-8D7F-DBE0420804CC}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{E5720619-CE98-4C26-B6B8-477ABB7C77E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">1/10/2019 9:48:26 AM</DTS:VariableValue>
+        DTS:DataType="7">2/21/2019 9:23:33 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -69,7 +69,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -231,7 +231,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -288,7 +288,7 @@
                     <inputColumn
                       refId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].Columns[AUDITOR_TYPE_CD]"
                       cachedDataType="wstr"
-                      cachedLength="3"
+                      cachedLength="4"
                       cachedName="AUDITOR_TYPE_CD"
                       externalMetadataColumnId="Package\Migrate Data\AUDITOR TYPE Not Found.Inputs[OLE DB Destination Input].ExternalColumns[VALUE]"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]" />
@@ -393,7 +393,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -785,7 +785,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -940,7 +940,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO DOCUMENT (
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO DOCUMENT (
 	DOCUMENT_REFERENCE
 	,CREATED
 	,CREATED_BY
@@ -1104,7 +1104,7 @@ SELECT ? = @DOCUMENT_ID;
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1224,7 +1224,7 @@ SELECT ? = @DOCUMENT_ID;
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO EXTERNAL_AUDIT (
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO EXTERNAL_AUDIT (
 	FK_CONTRACT_ID
 	,FISCAL_YEAR
 	,FK_AUDITOR_ID
@@ -2002,10 +2002,10 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
   FISCAL_YEAR,
   CASE AUDITOR_TYPE_CD
-    WHEN 'GA' THEN 'SAI'
+    WHEN 'GA' THEN 'SAIN'
     WHEN 'EA' THEN 'IAF'
     WHEN 'FI' THEN 'FI'
   ELSE AUDITOR_TYPE_CD END AUDITOR_TYPE_CD,
@@ -2053,7 +2053,8 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
   REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,8) DOCUMENT8,
   REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) DOCUMENT9,
   REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) DOCUMENT10
-FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
+FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT
+WHERE TRIM(INSTITUTION_CODE)!='EC-'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2115,7 +2116,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_CD]"
-                      length="3"
+                      length="4"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]"
                       name="AUDITOR_TYPE_CD"
                       truncationRowDisposition="FailComponent" />
@@ -2376,7 +2377,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_CD]"
                       dataType="wstr"
-                      length="3"
+                      length="4"
                       name="AUDITOR_TYPE_CD" />
                     <externalMetadataColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR_TYPE_DES]"
@@ -2521,7 +2522,7 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                     <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[AUDITOR_TYPE_CD]"
                       dataType="wstr"
-                      length="3"
+                      length="4"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[AUDITOR_TYPE_CD]"
                       name="AUDITOR_TYPE_CD" />
                     <outputColumn
@@ -2700,14 +2701,14 @@ FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
 FROM INSTITUTION) [refTable]
 where [refTable].[INSTITUTION_CODE] = ?</property>
                 <property
@@ -2860,7 +2861,7 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE  AS AUDITOR_TYPE_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE  AS AUDITOR_TYPE_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -2870,7 +2871,7 @@ WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE  AS AUDITOR_TYPE_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE  AS AUDITOR_TYPE_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -2937,7 +2938,7 @@ where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
                     <inputColumn
                       refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input].Columns[AUDITOR_TYPE_CD]"
                       cachedDataType="wstr"
-                      cachedLength="3"
+                      cachedLength="4"
                       cachedName="AUDITOR_TYPE_CD"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]">
                       <properties>
@@ -3026,14 +3027,14 @@ where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CONTRACT_ID, cast(CONTRACT_NUMBER AS NVARCHAR(50)) as CONTRACT_NUMBER
 FROM CONTRACT) [refTable]
 where [refTable].[CONTRACT_NUMBER] = ?</property>
                 <property
@@ -3186,7 +3187,7 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS ELIGIBILITY_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE AS ELIGIBILITY_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3196,7 +3197,7 @@ WHERE TYPE = 'EXTERNAL_LEVEL_ELIGIBILITY_TYPE'</property>
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS ELIGIBILITY_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE AS ELIGIBILITY_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3352,7 +3353,7 @@ where [refTable].[ELIGIBILITY_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS OPINION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE AS OPINION_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS OPINION_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3362,7 +3363,7 @@ WHERE TYPE = 'EXTERNAL_AUDIT_OPN'</property>
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS OPINION_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE AS OPINION_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS OPINION_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3518,7 +3519,7 @@ where [refTable].[OPINION_CODE] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT CODE AS PRODUCT_STATUS_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE AS PRODUCT_STATUS_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS PRODUCT_STATUS_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3528,7 +3529,7 @@ WHERE TYPE = 'EXTERNAL_PRODUCT_STATUS'</property>
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT CODE AS PRODUCT_STATUS_CODE
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE AS PRODUCT_STATUS_CODE
 	,CONVERGENCE_MASTER_DATA_ID AS PRODUCT_STATUS_ID
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
@@ -3695,7 +3696,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3857,7 +3858,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4397,34 +4398,34 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               startId="Package\Migrate Data\Label PRODUCT_STATUS.Outputs[Derived Column Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output5]"
-              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
+              endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
               name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output3]"
-              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
-              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
               endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output]"
+              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
               endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
-              endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
+              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output]"
+              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
+              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup No Match Output]"
               endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
@@ -4555,7 +4556,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="142,42"
+          Size="139.5,42"
           Id="Package\Migrate Data"
           TopLeft="126,145" />
         <NodeLayout
@@ -4568,7 +4569,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           TopLeft="123.944444444444,37" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="196.472222222222,79">
+          TopLeft="195.847222222222,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4590,7 +4591,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="197.25,187">
+          TopLeft="196.625,187">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4619,13 +4620,29 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,42"
-          Id="Package\Migrate Data\Label CONTRACT"
-          TopLeft="438,104.833333333333" />
+          Size="207,42"
+          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+          TopLeft="74.7142857142857,789.142857142857" />
         <NodeLayout
           Size="134,42"
           Id="Package\Migrate Data\LMS Source"
           TopLeft="96.3333333333334,12.1666666666667" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Migrate Data\Label ELIGIBILITY"
+          TopLeft="422,397" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Migrate Data\Unpivot by DOCUMENT"
+          TopLeft="82,878" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Migrate Data\Insert DOCUMENT"
+          TopLeft="92,1073" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Migrate Data\Drop rows without documents"
+          TopLeft="71,980" />
         <NodeLayout
           Size="222,42"
           Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
@@ -4635,29 +4652,25 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Lookup CONTRACT"
           TopLeft="73,100" />
         <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Migrate Data\Label CONTRACT"
+          TopLeft="438,104.833333333333" />
+        <NodeLayout
           Size="158,42"
-          Id="Package\Migrate Data\Derived Column"
-          TopLeft="94.5714285714286,692.142857142857" />
+          Id="Package\Migrate Data\Label AUDITOR"
+          TopLeft="443,194" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
+          TopLeft="708,497" />
         <NodeLayout
           Size="240,42"
           Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
           TopLeft="60,1168" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Migrate Data\Label AUDITOR TYPE"
-          TopLeft="424,295" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
-          TopLeft="726,294" />
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Migrate Data\ELIGIBILITY Not Found"
-          TopLeft="724,396" />
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Migrate Data\Label PRODUCT_STATUS"
-          TopLeft="408,497" />
         <NodeLayout
           Size="180,42"
           Id="Package\Migrate Data\Lookup ELIGIBILITY"
@@ -4667,81 +4680,45 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Lookup AUDITOR"
           TopLeft="81,198" />
         <NodeLayout
+          Size="190,42"
+          Id="Package\Migrate Data\Label AUDITOR TYPE"
+          TopLeft="424,295" />
+        <NodeLayout
           Size="158,42"
-          Id="Package\Migrate Data\Label AUDITOR"
-          TopLeft="443,194" />
+          Id="Package\Migrate Data\Derived Column"
+          TopLeft="94.5714285714286,692.142857142857" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Migrate Data\Label PRODUCT_STATUS"
+          TopLeft="408,497" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
+          TopLeft="726,294" />
         <NodeLayout
           Size="155,42"
           Id="Package\Migrate Data\Label OPINION"
           TopLeft="429,598" />
         <NodeLayout
-          Size="202,42"
-          Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
-          TopLeft="69,298" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
-          TopLeft="74.7142857142857,789.142857142857" />
+          Size="195,42"
+          Id="Package\Migrate Data\ELIGIBILITY Not Found"
+          TopLeft="724,396" />
         <NodeLayout
           Size="180,42"
           Id="Package\Migrate Data\OPINION Not Found"
           TopLeft="731,597" />
         <NodeLayout
-          Size="197,42"
-          Id="Package\Migrate Data\Unpivot by DOCUMENT"
-          TopLeft="82,878" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Migrate Data\Drop rows without documents"
-          TopLeft="71,980" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Migrate Data\CONTRACT Not Found"
-          TopLeft="737.166666666667,102.333333333333" />
+          Size="176,42"
+          Id="Package\Migrate Data\AUDITOR Not Found"
+          TopLeft="739,192" />
         <NodeLayout
           Size="164,42"
           Id="Package\Migrate Data\Lookup OPINION"
           TopLeft="90,599" />
         <NodeLayout
-          Size="173,42"
-          Id="Package\Migrate Data\Insert DOCUMENT"
-          TopLeft="92,1073" />
-        <NodeLayout
-          Size="237,42"
-          Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
-          TopLeft="708,497" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Migrate Data\AUDITOR Not Found"
-          TopLeft="739,192" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Migrate Data\Label ELIGIBILITY"
-          TopLeft="422,397" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[With documents]"
-          TopLeft="180.75,1022">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="202,42"
+          Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
+          TopLeft="69,298" />
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Unpivot Output]"
           TopLeft="181.75,920">
@@ -4976,78 +4953,6 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output5]"
-          TopLeft="163.75,142">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
-          TopLeft="171.5,340">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
-          TopLeft="167.5,240">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
           TopLeft="172.785714285714,641">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5071,7 +4976,31 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
+          TopLeft="175,440">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
           TopLeft="174.5,541">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5095,26 +5024,74 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output]"
-          TopLeft="175,440">
+          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
+          TopLeft="171.5,340">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,51.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          TopLeft="167.5,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          TopLeft="163.75,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5272,6 +5249,30 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[With documents]"
+          TopLeft="180.75,1022">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5330,33 +5331,33 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\PRODUCT_STATUS Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\ELIGIBILITY Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5415,25 +5416,28 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
+    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q2:string">Table</Value>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\ELIGIBILITY Not Found">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5451,7 +5455,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\CONTRACT Not Found">
+    design-time-name="Package\Migrate Data\AUDITOR Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5487,28 +5491,25 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\PRODUCT_STATUS Not Found">
+    design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
       </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\AUDITOR Not Found">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
