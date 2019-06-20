@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="98"
-  DTS:VersionGUID="{94523926-9682-435A-8576-057349B28C73}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{8BA519C3-1387-492F-B666-14139B9A5D5F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">6/5/2019 1:58:21 PM</DTS:VariableValue>
+        DTS:DataType="7">6/20/2019 2:57:00 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1068,7 +1068,8 @@
 	,CREATED_BY
 	,IS_ACTIVE
 	,IS_AUTHORIZED
-	,IS_FOR_PUBLICATION) VALUES(?,?,?,1,0,0);
+	,IS_FOR_PUBLICATION
+                ,FK_PROJECT_DOCUMENT_TYPE_ID) VALUES(?,?,?,1,0,0,(SELECT CONVERGENCE_MASTER_DATA_ID FROM CONVERGENCE_MASTER_DATA WHERE CODE = 'RVDC'));
 DECLARE @DOCUMENT_ID INT = SCOPE_IDENTITY();
 SELECT ? = @DOCUMENT_ID;
 </property>
@@ -1300,6 +1301,10 @@ SELECT ? = @DOCUMENT_ID;
                       refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[FK_DOCUMENT_TYPE_CODE_ID]"
                       dataType="i4"
                       name="FK_DOCUMENT_TYPE_CODE_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input].ExternalColumns[READY_TO_DISCLOSE]"
+                      dataType="bool"
+                      name="READY_TO_DISCLOSE" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1353,8 +1358,8 @@ SELECT ? = @DOCUMENT_ID;
 	,FK_PRODUCT_STATUS_ID
 	,CREATED
 	,CREATED_BY
-                ,FK_AUDITOR_TYPE_ID
-                ,FK_ELIGIBILITY_LEVEL_ID
+                ,AUDITOR_TYPE
+                ,ELIGIBILITY_LEVEL
                 ,FK_OPINION_ID) VALUES (?,?,?,?,?,?,?,?,?);
 
 DECLARE @EXTERNAL_AUDIT_ID INT = SCOPE_IDENTITY();
@@ -1420,18 +1425,6 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[CREATED_BY]" />
                     <inputColumn
-                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_TYPE_ID]"
-                      cachedDataType="i4"
-                      cachedName="AUDITOR_TYPE_ID"
-                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_ID]" />
-                    <inputColumn
-                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[ELIGIBILITY_ID]"
-                      cachedDataType="i4"
-                      cachedName="ELIGIBILITY_ID"
-                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_ID]" />
-                    <inputColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[OPINION_ID]"
                       cachedDataType="i4"
                       cachedName="OPINION_ID"
@@ -1443,6 +1436,20 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       cachedName="EXTERNAL_AUDIT_ID"
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[ELEGIBILITY_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ELEGIBILITY_CODE"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_TYPE_CD]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="AUDITOR_TYPE_CD"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1516,7 +1523,8 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="50"
                       name="Param_6">
                       <properties>
                         <property
@@ -1527,7 +1535,8 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="50"
                       name="Param_7">
                       <properties>
                         <property
@@ -6773,42 +6782,37 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               name="Eligibility"
               startId="Package\Migrate Data\Conditional Split.Outputs[Eligibility]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
-              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\Migrate Data.Paths[Lookup Match Output5]"
-              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
               endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
-              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
+              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
+              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
               name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output]"
-              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output3]"
+              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output]"
               endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
-              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
+              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
+              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
+              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
+              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output4]"
               endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
@@ -6818,12 +6822,12 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
-              endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
+              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output4]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
               endId="Package\Migrate Data\Union All R1.Inputs[Union All Input 1]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]" />
@@ -6833,17 +6837,22 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]" />
             <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
+              endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
+            <path
               refId="Package\Migrate Data.Paths[Migration]"
               endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
               name="Migration"
               startId="Package\Migrate Data\Multicast.Outputs[Migration]" />
             <path
-              refId="Package\Migrate Data.Paths[OLE DB Command Output1]"
+              refId="Package\Migrate Data.Paths[OLE DB Command Output]"
               endId="Package\Migrate Data\Unpivot by DOCUMENT.Inputs[Unpivot Input]"
               name="OLE DB Command Output"
               startId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Outputs[OLE DB Command Output]" />
             <path
-              refId="Package\Migrate Data.Paths[OLE DB Command Output]"
+              refId="Package\Migrate Data.Paths[OLE DB Command Output1]"
               endId="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT.Inputs[OLE DB Destination Input]"
               name="OLE DB Command Output"
               startId="Package\Migrate Data\Insert DOCUMENT.Outputs[OLE DB Command Output]" />
@@ -7021,105 +7030,145 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="160,42"
+          Id="Package\Migrate Data\Label CONTRACT"
+          TopLeft="438,104.833333333333" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
+          TopLeft="726,294" />
+        <NodeLayout
           Size="207,42"
-          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
-          TopLeft="74.7142857142857,881.142857142857" />
+          Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
+          TopLeft="66,399" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\Migrate Data\LMS Source"
-          TopLeft="96.3333333333334,12.1666666666667" />
+          Size="136.5,42"
+          Id="Package\Migrate Data\Union All R1"
+          TopLeft="369.5,505" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Migrate Data\Label ELIGIBILITY"
-          TopLeft="756,505" />
+          Size="190,42"
+          Id="Package\Migrate Data\Label AUDITOR TYPE"
+          TopLeft="424,295" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
+          TopLeft="69,298" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Migrate Data\Insert DOCUMENT"
+          TopLeft="408.25,1075" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Migrate Data\Label AUDITOR"
+          TopLeft="443,194" />
+        <NodeLayout
+          Size="136.5,42"
+          Id="Package\Migrate Data\Union All R2"
+          TopLeft="498.25,603.25" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Migrate Data\Conditional Split"
+          TopLeft="314.25,702" />
+        <NodeLayout
+          Size="159.5,42"
+          Id="Package\Migrate Data\Lookup OPINION"
+          TopLeft="90,599" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
+          TopLeft="708,397" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Migrate Data\Lookup AUDITOR"
+          TopLeft="81,198" />
         <NodeLayout
           Size="197,42"
           Id="Package\Migrate Data\Unpivot by DOCUMENT"
           TopLeft="398.25,880" />
         <NodeLayout
-          Size="173,42"
-          Id="Package\Migrate Data\Insert DOCUMENT"
-          TopLeft="408.25,1075" />
+          Size="195,42"
+          Id="Package\Migrate Data\ELIGIBILITY Not Found"
+          TopLeft="1058,504" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Migrate Data\LMS Source"
+          TopLeft="96.3333333333334,12.1666666666667" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Migrate Data\Lookup ELIGIBILITY"
+          TopLeft="83,506" />
         <NodeLayout
           Size="224,42"
           Id="Package\Migrate Data\Drop rows without documents"
           TopLeft="387.25,982" />
         <NodeLayout
           Size="207,42"
-          Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
-          TopLeft="66,399" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Migrate Data\Lookup CONTRACT"
-          TopLeft="73,100" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Migrate Data\CONTRACT Not Found"
-          TopLeft="737.166666666667,102.333333333333" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Migrate Data\Label CONTRACT"
-          TopLeft="438,104.833333333333" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Label AUDITOR"
-          TopLeft="443,194" />
-        <NodeLayout
-          Size="237,42"
-          Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
-          TopLeft="708,397" />
-        <NodeLayout
-          Size="240,42"
-          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
-          TopLeft="701.25,1070" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Migrate Data\Lookup ELIGIBILITY"
-          TopLeft="83,506" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Migrate Data\Lookup AUDITOR"
-          TopLeft="81,198" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Migrate Data\Label AUDITOR TYPE"
-          TopLeft="424,295" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Migrate Data\Derived Column"
-          TopLeft="94.5714285714286,792.142857142857" />
+          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+          TopLeft="74.7142857142857,881.142857142857" />
         <NodeLayout
           Size="213,42"
           Id="Package\Migrate Data\Label PRODUCT_STATUS"
           TopLeft="408,397" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
-          TopLeft="726,294" />
+          Size="180,42"
+          Id="Package\Migrate Data\OPINION Not Found"
+          TopLeft="1065,597" />
+        <NodeLayout
+          Size="120.5,42"
+          Id="Package\Migrate Data\Multicast"
+          TopLeft="113,701.5" />
         <NodeLayout
           Size="155,42"
           Id="Package\Migrate Data\Label OPINION"
           TopLeft="763,598" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\Migrate Data\ELIGIBILITY Not Found"
-          TopLeft="1058,504" />
+          Size="158,42"
+          Id="Package\Migrate Data\Derived Column"
+          TopLeft="94.5714285714286,792.142857142857" />
         <NodeLayout
-          Size="180,42"
-          Id="Package\Migrate Data\OPINION Not Found"
-          TopLeft="1065,597" />
+          Size="171,42"
+          Id="Package\Migrate Data\Label ELIGIBILITY"
+          TopLeft="756,505" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Migrate Data\Lookup CONTRACT"
+          TopLeft="73,100" />
         <NodeLayout
           Size="176,42"
           Id="Package\Migrate Data\AUDITOR Not Found"
           TopLeft="739,192" />
         <NodeLayout
-          Size="159.5,42"
-          Id="Package\Migrate Data\Lookup OPINION"
-          TopLeft="90,599" />
-        <NodeLayout
-          Size="202,42"
-          Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
-          TopLeft="69,298" />
+          Size="240,42"
+          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
+          TopLeft="701.25,1070" />
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[With documents]"
+          TopLeft="497,1024">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Unpivot Output]"
           TopLeft="498,922">
@@ -7140,6 +7189,108 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Union All Output 11]"
+          TopLeft="634.75,621.625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128.25,0"
+              Start="0,0"
+              End="120.75,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="120.75,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Union All Output 1]"
+          TopLeft="506,526">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250,0"
+              Start="0,0"
+              End="242.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="242.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Report]"
+          TopLeft="233.5,722.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.75,0"
+              Start="0,0"
+              End="73.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="73.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Opinion]"
+          TopLeft="416.25,702">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.25,-56.75"
+              Start="0,0"
+              End="150.25,-49.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-19.0478927203065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-19.0478927203065"
+                    Point2="0,-23.0478927203065"
+                    Point3="4,-23.0478927203065" />
+                  <mssgle:LineSegment
+                    End="146.25,-23.0478927203065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.25,-23.0478927203065"
+                    Point2="150.25,-23.0478927203065"
+                    Point3="150.25,-27.0478927203065" />
+                  <mssgle:LineSegment
+                    End="150.25,-49.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="57.710546875,-18.0478927203065,34.82890625,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7166,28 +7317,6 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[OLE DB Command Output1]"
-          TopLeft="281.714285714286,901.571428571428">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="116.535714285714,0"
-              Start="0,0"
-              End="109.035714285714,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="109.035714285714,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[OLE DB Command Output]"
           TopLeft="581.25,1093.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7209,7 +7338,75 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
+          Id="Package\Migrate Data.Paths[OLE DB Command Output]"
+          TopLeft="281.714285714286,901.571428571428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.535714285714,0"
+              Start="0,0"
+              End="109.035714285714,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="109.035714285714,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Migration]"
+          TopLeft="173.410714285714,743.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.642857142857"
+              Start="0,0"
+              End="0,41.142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output5]"
+          TopLeft="249.5,622.125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="248.75,0"
+              Start="0,0"
+              End="241.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="241.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="64.81861328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
           TopLeft="249,217">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7233,7 +7430,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
+          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
           TopLeft="273,419">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7253,6 +7450,30 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="7.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
+          TopLeft="252,123.416666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,0"
+              Start="0,0"
+              End="178.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="178.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7282,30 +7503,102 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output]"
-          TopLeft="252,123.416666666667">
+          TopLeft="263,526.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="186,0"
+              EndConnector="106.5,0"
               Start="0,0"
-              End="178.5,0">
+              End="99,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="178.5,0" />
+                    End="99,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="33.44361328125,5,111.6127734375,11.609375"
+              BoundingBox="-6.30638671875,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          Id="Package\Migrate Data.Paths[Lookup Match Output5]"
+          TopLeft="171.25,441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
+          TopLeft="171.5,641">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
+          TopLeft="171.375,548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
           TopLeft="163.75,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7329,7 +7622,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
           TopLeft="167.5,240">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7349,6 +7642,66 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          TopLeft="169.75,340">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Eligibility]"
+          TopLeft="367.25,702">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.5,-155"
+              Start="0,0"
+              End="70.5,-147.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-58.9501915708812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-58.9501915708812"
+                    Point2="0,-62.9501915708812"
+                    Point3="4,-62.9501915708812" />
+                  <mssgle:LineSegment
+                    End="66.5,-62.9501915708812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.5,-62.9501915708812"
+                    Point2="70.5,-62.9501915708812"
+                    Point3="70.5,-66.9501915708812" />
+                  <mssgle:LineSegment
+                    End="70.5,-147.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.26806640625,-57.9501915708812,39.9638671875,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7506,358 +7859,19 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[With documents]"
-          TopLeft="497,1024">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
-          TopLeft="171.375,548">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
-          TopLeft="169.75,340">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
-          TopLeft="171.25,441">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120.5,42"
-          Id="Package\Migrate Data\Multicast"
-          TopLeft="113,701.5" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output5]"
-          TopLeft="171.5,641">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
-              Start="0,0"
-              End="0,53">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Migration]"
-          TopLeft="173.410714285714,743.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.642857142857"
-              Start="0,0"
-              End="0,41.142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Migrate Data\Conditional Split"
-          TopLeft="314.25,702" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Report]"
-          TopLeft="233.5,722.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="80.75,0"
-              Start="0,0"
-              End="73.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="73.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="136.5,42"
-          Id="Package\Migrate Data\Union All R2"
-          TopLeft="498.25,603.25" />
-        <NodeLayout
-          Size="136.5,42"
-          Id="Package\Migrate Data\Union All R1"
-          TopLeft="369.5,505" />
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
-          TopLeft="263,526.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="106.5,0"
-              Start="0,0"
-              End="99,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="99,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.30638671875,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Eligibility]"
-          TopLeft="367.25,702">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="70.5,-155"
-              Start="0,0"
-              End="70.5,-147.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-58.9501915708812" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-58.9501915708812"
-                    Point2="0,-62.9501915708812"
-                    Point3="4,-62.9501915708812" />
-                  <mssgle:LineSegment
-                    End="66.5,-62.9501915708812" />
-                  <mssgle:CubicBezierSegment
-                    Point1="66.5,-62.9501915708812"
-                    Point2="70.5,-62.9501915708812"
-                    Point3="70.5,-66.9501915708812" />
-                  <mssgle:LineSegment
-                    End="70.5,-147.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="15.26806640625,-57.9501915708812,39.9638671875,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Union All Output 1]"
-          TopLeft="506,526">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="250,0"
-              Start="0,0"
-              End="242.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="242.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output5]"
-          TopLeft="249.5,622.125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="248.75,0"
-              Start="0,0"
-              End="241.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="241.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="64.8186132812501,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Opinion]"
-          TopLeft="416.25,702">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="150.25,-56.75"
-              Start="0,0"
-              End="150.25,-49.25">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-19.0478927203065" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-19.0478927203065"
-                    Point2="0,-23.0478927203065"
-                    Point3="4,-23.0478927203065" />
-                  <mssgle:LineSegment
-                    End="146.25,-23.0478927203065" />
-                  <mssgle:CubicBezierSegment
-                    Point1="146.25,-23.0478927203065"
-                    Point2="150.25,-23.0478927203065"
-                    Point3="150.25,-27.0478927203065" />
-                  <mssgle:LineSegment
-                    End="150.25,-49.25" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="57.7105468750001,-18.0478927203065,34.82890625,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Union All Output 11]"
-          TopLeft="634.75,621.625">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="128.25,0"
-              Start="0,0"
-              End="120.75,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="120.75,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\LMS Source">
+    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7885,7 +7899,30 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup CONTRACT">
+    design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup OPINION">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7934,7 +7971,30 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
+    design-time-name="Package\Migrate Data\Lookup AUDITOR">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\ELIGIBILITY Not Found">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7943,6 +8003,14 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\LMS Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -7970,7 +8038,20 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup AUDITOR">
+    design-time-name="Package\Migrate Data\OPINION Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup CONTRACT">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -7989,45 +8070,6 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\ELIGIBILITY Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\OPINION Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -8045,48 +8087,15 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup OPINION">
+    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
