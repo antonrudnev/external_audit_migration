@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{8BA519C3-1387-492F-B666-14139B9A5D5F}">
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{AEF641DB-466B-4792-9EDA-A4386D0F1535}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">6/20/2019 2:57:00 PM</DTS:VariableValue>
+        DTS:DataType="7">7/15/2019 5:48:02 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2187,7 +2187,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
   REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) DOCUMENT9,
   REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) DOCUMENT10
 FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT
-WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND EXTRACT(YEAR FROM SYSDATE)</property>
+WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND 2018</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -6783,64 +6783,64 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               startId="Package\Migrate Data\Conditional Split.Outputs[Eligibility]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output5]"
-              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
-              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output3]"
-              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output]"
-              endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
-              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
               endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
+              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output3]"
+              endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output]"
+              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
+              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
+              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Migrate Data.Paths[Lookup No Match Output4]"
-              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output5]"
-              endId="Package\Migrate Data\Union All R2.Inputs[Union All Input 1]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
-              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
-              endId="Package\Migrate Data\Union All R1.Inputs[Union All Input 1]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
               endId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output5]"
               endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
+              endId="Package\Migrate Data\Union All R1.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
+              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
+              endId="Package\Migrate Data\Union All R2.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
+              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Migration]"
               endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
@@ -7165,7 +7165,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
+              BoundingBox="-66.2969140625,15.9453125,132.593828125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7188,7 +7188,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.1244140625,20.6357421875,50.248828125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7210,7 +7212,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="39.5248828125,5,41.700234375,9.6025390625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7232,7 +7236,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="103.41552734375,5,35.6689453125,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7254,7 +7260,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="11.5298828125,5,50.190234375,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7289,7 +7297,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="57.710546875,-18.0478927203065,34.82890625,11.43359375"
+              BoundingBox="32.0557421875,-18.0478927203065,86.138515625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7312,7 +7320,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.1244140625,13.5524088541667,50.248828125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7334,7 +7344,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="31.44052734375,5,49.6189453125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7356,7 +7368,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="29.422739955357,5,50.190234375,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7378,83 +7392,13 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.0951171875,14.9571707589285,50.190234375,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output5]"
-          TopLeft="249.5,622.125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="248.75,0"
-              Start="0,0"
-              End="241.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="241.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="64.81861328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
-          TopLeft="249,217">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="194,0"
-              Start="0,0"
-              End="186.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="186.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="37.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
-          TopLeft="273,419">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="135,0"
-              Start="0,0"
-              End="127.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="127.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="7.94361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
           TopLeft="252,123.416666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7478,7 +7422,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
           TopLeft="271,317.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7502,7 +7446,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
           TopLeft="263,526.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7526,79 +7470,79 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
+          TopLeft="273,419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135,0"
+              Start="0,0"
+              End="127.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="127.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="249.5,622.125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="248.75,0"
+              Start="0,0"
+              End="241.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="241.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="64.81861328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          TopLeft="249,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="194,0"
+              Start="0,0"
+              End="186.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="186.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.09826171875,5,162.3034765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output5]"
-          TopLeft="171.25,441">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
-          TopLeft="171.5,641">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
-              Start="0,0"
-              End="0,53">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
-          TopLeft="171.375,548">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
           TopLeft="163.75,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7617,12 +7561,12 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
+              BoundingBox="-77.78173828125,18.4453125,155.5634765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
           TopLeft="167.5,240">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7641,12 +7585,12 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              BoundingBox="-77.78173828125,19.4453125,155.5634765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
           TopLeft="169.75,340">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7665,7 +7609,79 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
+              BoundingBox="-77.78173828125,19.9453125,155.5634765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
+          TopLeft="171.375,548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.78173828125,15.9453125,155.5634765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          TopLeft="171.5,641">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.78173828125,20.6953125,155.5634765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          TopLeft="171.25,441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.78173828125,22.9453125,155.5634765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7701,7 +7717,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="15.26806640625,-57.9501915708812,39.9638671875,11.6630859375"
+              BoundingBox="-7.35673828125,-57.9501915708812,85.2134765625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7746,7 +7762,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="48.8998828125,5,41.700234375,9.6025390625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7790,7 +7808,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="43.91552734375,5,35.6689453125,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7812,7 +7832,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.0951171875,14.1357421875,50.190234375,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7856,7 +7878,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="44.3705859375,5,41.758828125,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
