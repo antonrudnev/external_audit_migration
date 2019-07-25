@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="107"
-  DTS:VersionGUID="{EDB9DDCC-2A74-44BE-B82D-502D09FB4A2B}">
+  DTS:VersionBuild="110"
+  DTS:VersionGUID="{F681A619-BE9C-4B16-B39C-2D35D4E97EE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">7/18/2019 10:13:08 PM</DTS:VariableValue>
+        DTS:DataType="7">7/25/2019 2:02:11 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1068,8 +1068,7 @@
 	,CREATED_BY
 	,IS_ACTIVE
 	,IS_AUTHORIZED
-	,IS_FOR_PUBLICATION
-                ,FK_PROJECT_DOCUMENT_TYPE_ID) VALUES(?,?,?,1,0,0,(SELECT CONVERGENCE_MASTER_DATA_ID FROM CONVERGENCE_MASTER_DATA WHERE CODE = 'RVDC'));
+	,IS_FOR_PUBLICATION) VALUES(?,?,?,1,0,0);
 DECLARE @DOCUMENT_ID INT = SCOPE_IDENTITY();
 SELECT ? = @DOCUMENT_ID;
 </property>
@@ -2136,7 +2135,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
   FISCAL_YEAR,
   CAST(CASE AUDITOR_TYPE_CD
-    WHEN 'GA' THEN 'SAIN'
+    WHEN 'GA' THEN 'SAI'
     WHEN 'EA' THEN 'IAF'
     WHEN 'FI' THEN 'FI'
   ELSE AUDITOR_TYPE_CD END AS NVARCHAR2(4)) AUDITOR_TYPE_CD,
@@ -2147,7 +2146,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
     WHEN 'LE' THEN 'ELG'
     WHEN 'GE' THEN 'ELG+'
     WHEN 'NE' THEN 'NE'
-    WHEN 'RE' THEN 'RE'
+    WHEN 'RE' THEN 'ELG'
     WHEN 'NULL' THEN 'NULL'
   ELSE ELEGIBILITY_CODE END AS NVARCHAR2(4)) ELEGIBILITY_CODE,
   CAST(ELEGIBILITY_DESCRIPTION AS NVARCHAR2(15)) ELEGIBILITY_DESCRIPTION,
@@ -6908,7 +6907,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{FF31F1B9-F13F-4CDB-BDA3-B0CDCCE6AE4D}"
-          SQLTask:SqlStatementSource="IF (SELECT COUNT(*) FROM TMP_MIGR_EXT_AUD)=0&#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF (SELECT COUNT(*) FROM TMP_MIGR_EXT_AUD)=0&#xA;&#x9;DROP TABLE TMP_MIGR_EXT_AUD&#xA;&#xA;GO&#xA;&#xA;UPDATE DOCUMENT_EXT_AUDIT&#xA;SET FK_DOCUMENT_TYPE_CODE_ID = (SELECT CONVERGENCE_MASTER_DATA_ID FROM CONVERGENCE_MASTER_DATA WHERE CODE = 'RVDC')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
