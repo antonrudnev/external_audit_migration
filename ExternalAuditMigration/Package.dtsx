@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="110"
-  DTS:VersionGUID="{F681A619-BE9C-4B16-B39C-2D35D4E97EE5}">
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{565AA7FD-6F0C-4F72-BE84-A1ADAF9C29F8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">7/25/2019 2:02:11 PM</DTS:VariableValue>
+        DTS:DataType="7">7/31/2019 3:02:37 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1359,7 +1359,8 @@ SELECT ? = @DOCUMENT_ID;
 	,CREATED_BY
                 ,AUDITOR_TYPE
                 ,ELIGIBILITY_LEVEL
-                ,FK_OPINION_ID) VALUES (?,?,?,?,?,?,?,?,?);
+                ,FK_OPINION_ID
+                ,MIGRATED_DUE_DATE) VALUES (?,?,?,?,?,?,?,?,?,?);
 
 DECLARE @EXTERNAL_AUDIT_ID INT = SCOPE_IDENTITY();
 
@@ -1430,25 +1431,29 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       lineageId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output].Columns[OPINION_ID]" />
                     <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[DUE_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DUE_DATE"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DUE_DATE]" />
+                    <inputColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[EXTERNAL_AUDIT_ID]"
                       cachedDataType="i4"
                       cachedName="EXTERNAL_AUDIT_ID"
-                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       lineageId="Package\Migrate Data\Derived Column.Outputs[Derived Column Output].Columns[EXTERNAL_AUDIT_ID]" />
                     <inputColumn
-                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[ELEGIBILITY_CODE]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="ELEGIBILITY_CODE"
-                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[ELEGIBILITY_CODE]" />
-                    <inputColumn
-                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_TYPE_CD]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="AUDITOR_TYPE_CD"
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[AUDITOR_TYPE_NAME]"
+                      cachedDataType="nText"
+                      cachedName="AUDITOR_TYPE_NAME"
                       externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDITOR_TYPE_CD]" />
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_NAME]" />
+                    <inputColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].Columns[ELIGIBILITY_NAME]"
+                      cachedDataType="nText"
+                      cachedName="ELIGIBILITY_NAME"
+                      externalMetadataColumnId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_NAME]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1557,8 +1562,19 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      dataType="i4"
+                      dataType="dbDate"
                       name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\Insert EXTERNAL_AUDIT.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="i4"
+                      name="Param_10">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2175,6 +2191,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
   AUDIT_COST,
   CAST(AUDIT_COST_CURRENCY AS NVARCHAR2(3)) AUDIT_COST_CURRENCY,
   CAST(OBSERVATION_DESCRIPTION AS NVARCHAR2(640)) OBSERVATION_DESCRIPTION,
+  DUE_DATE AS DUE_DATE,
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,1) AS NVARCHAR2(640)) DOCUMENT1,
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,2) AS NVARCHAR2(640)) DOCUMENT2,
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,3) AS NVARCHAR2(640)) DOCUMENT3,
@@ -2493,6 +2510,15 @@ WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND 2018</prope
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[AUDIT_TYPE]"
                       name="AUDIT_TYPE"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DUE_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DUE_DATE]"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[DUE_DATE]"
+                      name="DUE_DATE"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2632,6 +2658,10 @@ WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND 2018</prope
                       dataType="wstr"
                       length="10"
                       name="AUDIT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].ExternalColumns[DUE_DATE]"
+                      dataType="dbTimeStamp"
+                      name="DUE_DATE" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2742,6 +2772,11 @@ WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND 2018</prope
                       length="640"
                       lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT1]"
                       name="DOCUMENT1" />
+                    <outputColumn
+                      refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DUE_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DUE_DATE]"
+                      name="DUE_DATE" />
                     <outputColumn
                       refId="Package\Migrate Data\LMS Source.Outputs[OLE DB Source Error Output].Columns[DOCUMENT2]"
                       dataType="wstr"
@@ -2994,7 +3029,7 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE  AS AUDITOR_TYPE_CODE
-	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
+	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID ,NAME_EN AS AUDITOR_TYPE_NAME 
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
 WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
@@ -3004,7 +3039,7 @@ WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE  AS AUDITOR_TYPE_CODE
-	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID
+	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID ,NAME_EN AS AUDITOR_TYPE_NAME 
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
 WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE') [refTable]
@@ -3039,7 +3074,7 @@ where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AUDITOR_TYPE_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AUDITOR_TYPE_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AUDITOR_TYPE_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AUDITOR_TYPE_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AUDITOR_TYPE_NAME" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3108,6 +3143,20 @@ where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">AUDITOR_TYPE_ID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_NAME]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output].Columns[AUDITOR_TYPE_NAME]"
+                      name="AUDITOR_TYPE_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AUDITOR_TYPE_NAME</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -3320,22 +3369,22 @@ where [refTable].[CONTRACT_NUMBER] = ?</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CODE AS ELIGIBILITY_CODE
-	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
-FROM CONVERGENCE_MASTER_TYPE
+	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID ,NAME_EN AS ELIGIBILITY_NAME 
+FROM CONVERGENCE_MASTER_TYPE 
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
 WHERE TYPE = 'EXTERNAL_LEVEL_ELIGIBILITY_TYPE' 
-UNION SELECT 'NULL', NULL</property>
+UNION SELECT 'NULL', NULL, 'NULL'</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CODE AS ELIGIBILITY_CODE
-	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID
-FROM CONVERGENCE_MASTER_TYPE
+	,CONVERGENCE_MASTER_DATA_ID AS ELIGIBILITY_ID ,NAME_EN AS ELIGIBILITY_NAME 
+FROM CONVERGENCE_MASTER_TYPE 
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
 WHERE TYPE = 'EXTERNAL_LEVEL_ELIGIBILITY_TYPE' 
-UNION SELECT 'NULL', NULL) [refTable]
+UNION SELECT 'NULL', NULL, 'NULL') [refTable]
 where [refTable].[ELIGIBILITY_CODE] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -3367,7 +3416,7 @@ where [refTable].[ELIGIBILITY_CODE] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ELIGIBILITY_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ELIGIBILITY_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ELIGIBILITY_CODE" dataType="DT_WSTR" length="125" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ELIGIBILITY_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ELIGIBILITY_NAME" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3424,6 +3473,20 @@ where [refTable].[ELIGIBILITY_CODE] = ?</property>
                   name="Lookup Match Output"
                   synchronousInputId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_NAME]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_NAME]"
+                      name="ELIGIBILITY_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ELIGIBILITY_NAME</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
                       refId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output].Columns[ELIGIBILITY_ID]"
                       dataType="i4"
@@ -7164,7 +7227,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-66.2969140625,15.9453125,73.2355078125,9.7490234375"
+              BoundingBox="-36.61775390625,16.87548828125,73.2355078125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7448,7 +7511,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="12.09826171875,5,111.6127734375,11.609375"
+              BoundingBox="37.44361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7544,7 +7607,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,15.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7568,7 +7631,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,20.6953125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7592,7 +7655,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,22.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7616,7 +7679,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,19.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,19.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7640,7 +7703,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,19.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7664,7 +7727,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.78173828125,18.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7903,7 +7966,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7913,7 +7976,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8019,7 +8082,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8029,7 +8092,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
