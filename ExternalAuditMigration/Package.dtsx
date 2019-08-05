@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="114"
-  DTS:VersionGUID="{565AA7FD-6F0C-4F72-BE84-A1ADAF9C29F8}">
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{A98C7E31-22F7-43C4-952A-F90E44F7D3BC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">7/31/2019 3:02:37 PM</DTS:VariableValue>
+        DTS:DataType="7">8/5/2019 4:37:31 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2203,7 +2203,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) AS NVARCHAR2(640)) DOCUMENT9,
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) AS NVARCHAR2(640)) DOCUMENT10
 FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT
-WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR BETWEEN 2014 AND 2018</property>
+WHERE TRIM(INSTITUTION_CODE)!='EC-' AND DUE_DATE &lt; to_date('08-08-2019', 'dd-MM-yyyy')</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
