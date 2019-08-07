@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="117"
-  DTS:VersionGUID="{056B32F0-90EE-49A1-BA3F-0EE53AFD955D}">
+  DTS:VersionBuild="126"
+  DTS:VersionGUID="{9E5AE157-CB39-4F4B-A90E-39D5F101CC71}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,75 @@
       DTS:Namespace="User"
       DTS:ObjectName="Created">
       <DTS:VariableValue
-        DTS:DataType="7">8/7/2019 1:19:09 AM</DTS:VariableValue>
+        DTS:DataType="7">8/7/2019 6:01:11 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{446D9FEB-1AB3-4857-952B-9D7AAE65B50B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,&#xA;  FISCAL_YEAR,&#xA;  CAST(CASE COALESCE(AUDITOR_TYPE_CD, 'NULL')&#xA;    WHEN 'GA' THEN 'SAI'&#xA;    WHEN 'EA' THEN 'IAF'&#xA;    WHEN 'FI' THEN 'FI'&#xA;    WHEN 'NULL' THEN 'NULL'&#xA;  ELSE AUDITOR_TYPE_CD END AS NVARCHAR2(4)) AUDITOR_TYPE_CD,&#xA;  CAST(AUDITOR_TYPE_DES AS NVARCHAR2(25)) AUDITOR_TYPE_DES,&#xA;  CAST(COALESCE(TRIM(INSTITUTION_CODE), 'NULL') AS NVARCHAR2(50)) INSTITUTION_CODE,&#xA;  CAST(INSTITUTION_CODE_DESCRIPTION AS NVARCHAR2(81)) INSTITUTION_CODE_DESCRIPTION,&#xA;  CAST(CASE COALESCE(TRIM(ELEGIBILITY_CODE), 'NULL')&#xA;    WHEN 'LE' THEN 'ELG'&#xA;    WHEN 'GE' THEN 'ELG+'&#xA;    WHEN 'NE' THEN 'NE'&#xA;    WHEN 'RE' THEN 'ELG'&#xA;    WHEN 'NULL' THEN 'NULL'&#xA;  ELSE ELEGIBILITY_CODE END AS NVARCHAR2(4)) ELEGIBILITY_CODE,&#xA;  CAST(ELEGIBILITY_DESCRIPTION AS NVARCHAR2(15)) ELEGIBILITY_DESCRIPTION,&#xA;  CAST(AUDIT_TYPE AS NVARCHAR2(10)) AUDIT_TYPE,&#xA;  CAST(CASE PRODUCT_STATUS_CODE&#xA;    WHEN 'ANALYZED' THEN 'ANY'&#xA;    WHEN 'WAIVED' THEN 'WA'&#xA;    WHEN 'RECEIVED' THEN 'REC'&#xA;    WHEN 'CONTRACTED' THEN 'SC'&#xA;    WHEN 'EXTENDED' THEN 'EX'&#xA;    WHEN 'SCHEDULED' THEN 'SC'&#xA;  ELSE PRODUCT_STATUS_CODE END AS NVARCHAR2(10)) PRODUCT_STATUS_CODE,&#xA;  CAST(PRODUCT_STATUS_CODE_DES AS NVARCHAR2(10)) PRODUCT_STATUS_CODE_DES,&#xA;  CAST(CASE COALESCE(TRIM(OPINION_CODE), 'NULL')&#xA;    WHEN 'LI' THEN 'CLE'&#xA;    WHEN 'Q' THEN 'QOP'&#xA;    WHEN 'AB' THEN 'DIO'&#xA;    WHEN 'CM' THEN 'CM'&#xA;    WHEN 'U' THEN 'CLE'&#xA;    WHEN 'AD' THEN 'ADO'&#xA;    WHEN 'SA' THEN 'QOP'&#xA;    WHEN 'DO' THEN 'DO'&#xA;    WHEN 'NULL' THEN 'NULL'&#xA;  ELSE TRIM(OPINION_CODE) END AS NVARCHAR2(4)) OPINION_CODE,&#xA;  CAST(OPINION_CODE_DESCRIPTION AS NVARCHAR2(23)) OPINION_CODE_DESCRIPTION,&#xA;  AUDIT_HOURS,&#xA;  AUDIT_COST,&#xA;  CAST(AUDIT_COST_CURRENCY AS NVARCHAR2(3)) AUDIT_COST_CURRENCY,&#xA;  CAST(OBSERVATION_DESCRIPTION AS NVARCHAR2(640)) OBSERVATION_DESCRIPTION,&#xA;  DUE_DATE AS DUE_DATE,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,1) AS NVARCHAR2(640)) DOCUMENT1,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,2) AS NVARCHAR2(640)) DOCUMENT2,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,3) AS NVARCHAR2(640)) DOCUMENT3,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,4) AS NVARCHAR2(640)) DOCUMENT4,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,5) AS NVARCHAR2(640)) DOCUMENT5,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,6) AS NVARCHAR2(640)) DOCUMENT6,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,7) AS NVARCHAR2(640)) DOCUMENT7,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,8) AS NVARCHAR2(640)) DOCUMENT8,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) AS NVARCHAR2(640)) DOCUMENT9,&#xA;  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) AS NVARCHAR2(640)) DOCUMENT10&#xA;FROM &quot;+ @[$Project::SchemaName] +&quot;.MIGR_WLMS_EXTERNAL_AUDIT&#xA;WHERE (TRIM(INSTITUTION_CODE)!='EC-' OR INSTITUTION_CODE IS NULL) AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; to_date('&quot;+ @[$Project::MigrationDate] +&quot;', 'dd-MM-yyyy')&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
+  FISCAL_YEAR,
+  CAST(CASE COALESCE(AUDITOR_TYPE_CD, 'NULL')
+    WHEN 'GA' THEN 'SAI'
+    WHEN 'EA' THEN 'IAF'
+    WHEN 'FI' THEN 'FI'
+    WHEN 'NULL' THEN 'NULL'
+  ELSE AUDITOR_TYPE_CD END AS NVARCHAR2(4)) AUDITOR_TYPE_CD,
+  CAST(AUDITOR_TYPE_DES AS NVARCHAR2(25)) AUDITOR_TYPE_DES,
+  CAST(COALESCE(TRIM(INSTITUTION_CODE), 'NULL') AS NVARCHAR2(50)) INSTITUTION_CODE,
+  CAST(INSTITUTION_CODE_DESCRIPTION AS NVARCHAR2(81)) INSTITUTION_CODE_DESCRIPTION,
+  CAST(CASE COALESCE(TRIM(ELEGIBILITY_CODE), 'NULL')
+    WHEN 'LE' THEN 'ELG'
+    WHEN 'GE' THEN 'ELG+'
+    WHEN 'NE' THEN 'NE'
+    WHEN 'RE' THEN 'ELG'
+    WHEN 'NULL' THEN 'NULL'
+  ELSE ELEGIBILITY_CODE END AS NVARCHAR2(4)) ELEGIBILITY_CODE,
+  CAST(ELEGIBILITY_DESCRIPTION AS NVARCHAR2(15)) ELEGIBILITY_DESCRIPTION,
+  CAST(AUDIT_TYPE AS NVARCHAR2(10)) AUDIT_TYPE,
+  CAST(CASE PRODUCT_STATUS_CODE
+    WHEN 'ANALYZED' THEN 'ANY'
+    WHEN 'WAIVED' THEN 'WA'
+    WHEN 'RECEIVED' THEN 'REC'
+    WHEN 'CONTRACTED' THEN 'SC'
+    WHEN 'EXTENDED' THEN 'EX'
+    WHEN 'SCHEDULED' THEN 'SC'
+  ELSE PRODUCT_STATUS_CODE END AS NVARCHAR2(10)) PRODUCT_STATUS_CODE,
+  CAST(PRODUCT_STATUS_CODE_DES AS NVARCHAR2(10)) PRODUCT_STATUS_CODE_DES,
+  CAST(CASE COALESCE(TRIM(OPINION_CODE), 'NULL')
+    WHEN 'LI' THEN 'CLE'
+    WHEN 'Q' THEN 'QOP'
+    WHEN 'AB' THEN 'DIO'
+    WHEN 'CM' THEN 'CM'
+    WHEN 'U' THEN 'CLE'
+    WHEN 'AD' THEN 'ADO'
+    WHEN 'SA' THEN 'QOP'
+    WHEN 'DO' THEN 'DO'
+    WHEN 'NULL' THEN 'NULL'
+  ELSE TRIM(OPINION_CODE) END AS NVARCHAR2(4)) OPINION_CODE,
+  CAST(OPINION_CODE_DESCRIPTION AS NVARCHAR2(23)) OPINION_CODE_DESCRIPTION,
+  AUDIT_HOURS,
+  AUDIT_COST,
+  CAST(AUDIT_COST_CURRENCY AS NVARCHAR2(3)) AUDIT_COST_CURRENCY,
+  CAST(OBSERVATION_DESCRIPTION AS NVARCHAR2(640)) OBSERVATION_DESCRIPTION,
+  DUE_DATE AS DUE_DATE,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,1) AS NVARCHAR2(640)) DOCUMENT1,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,2) AS NVARCHAR2(640)) DOCUMENT2,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,3) AS NVARCHAR2(640)) DOCUMENT3,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,4) AS NVARCHAR2(640)) DOCUMENT4,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,5) AS NVARCHAR2(640)) DOCUMENT5,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,6) AS NVARCHAR2(640)) DOCUMENT6,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,7) AS NVARCHAR2(640)) DOCUMENT7,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,8) AS NVARCHAR2(640)) DOCUMENT8,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) AS NVARCHAR2(640)) DOCUMENT9,
+  CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) AS NVARCHAR2(640)) DOCUMENT10
+FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT
+WHERE (TRIM(INSTITUTION_CODE)!='EC-' OR INSTITUTION_CODE IS NULL) AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; to_date('08-08-2019', 'dd-MM-yyyy')</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2150,13 +2218,14 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(TRIM(CONTRACT_NUMBER) AS NVARCHAR2(50)) CONTRACT_NUMBER,
   FISCAL_YEAR,
-  CAST(CASE AUDITOR_TYPE_CD
+  CAST(CASE COALESCE(AUDITOR_TYPE_CD, 'NULL')
     WHEN 'GA' THEN 'SAI'
     WHEN 'EA' THEN 'IAF'
     WHEN 'FI' THEN 'FI'
+    WHEN 'NULL' THEN 'NULL'
   ELSE AUDITOR_TYPE_CD END AS NVARCHAR2(4)) AUDITOR_TYPE_CD,
   CAST(AUDITOR_TYPE_DES AS NVARCHAR2(25)) AUDITOR_TYPE_DES,
-  CAST(TRIM(INSTITUTION_CODE) AS NVARCHAR2(50)) INSTITUTION_CODE,
+  CAST(COALESCE(TRIM(INSTITUTION_CODE), 'NULL') AS NVARCHAR2(50)) INSTITUTION_CODE,
   CAST(INSTITUTION_CODE_DESCRIPTION AS NVARCHAR2(81)) INSTITUTION_CODE_DESCRIPTION,
   CAST(CASE COALESCE(TRIM(ELEGIBILITY_CODE), 'NULL')
     WHEN 'LE' THEN 'ELG'
@@ -2173,6 +2242,7 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
     WHEN 'RECEIVED' THEN 'REC'
     WHEN 'CONTRACTED' THEN 'SC'
     WHEN 'EXTENDED' THEN 'EX'
+    WHEN 'SCHEDULED' THEN 'SC'
   ELSE PRODUCT_STATUS_CODE END AS NVARCHAR2(10)) PRODUCT_STATUS_CODE,
   CAST(PRODUCT_STATUS_CODE_DES AS NVARCHAR2(10)) PRODUCT_STATUS_CODE_DES,
   CAST(CASE COALESCE(TRIM(OPINION_CODE), 'NULL')
@@ -2203,11 +2273,11 @@ SELECT ? = @EXTERNAL_AUDIT_ID; </property>
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,9) AS NVARCHAR2(640)) DOCUMENT9,
   CAST(REGEXP_SUBSTR(OBSERVATION_DESCRIPTION, 'EZSHARE[0-9-]+',1,10) AS NVARCHAR2(640)) DOCUMENT10
 FROM LMSADM5.MIGR_WLMS_EXTERNAL_AUDIT
-WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; to_date('08-08-2019', 'dd-MM-yyyy')</property>
+WHERE (TRIM(INSTITUTION_CODE)!='EC-' OR INSTITUTION_CODE IS NULL) AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; to_date('08-08-2019', 'dd-MM-yyyy')</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQuery</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2220,7 +2290,7 @@ WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; 
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2868,15 +2938,19 @@ WHERE TRIM(INSTITUTION_CODE)!='EC-' AND FISCAL_YEAR &gt;=2014 AND DUE_DATE &lt; 
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
-FROM INSTITUTION</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT NULL AS INSTITUTION_ID, 'NULL' AS INSTITUTION_CODE
+UNION ALL
+SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+ FROM INSTITUTION</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
-FROM INSTITUTION) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT NULL AS INSTITUTION_ID, 'NULL' AS INSTITUTION_CODE
+UNION ALL
+SELECT INSTITUTION_ID, CAST(LTRIM(RTRIM(ACRNM)) AS NVARCHAR(50)) AS INSTITUTION_CODE
+ FROM INSTITUTION) [refTable]
 where [refTable].[INSTITUTION_CODE] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -2913,7 +2987,7 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Migrate Data\Insert EXTERNAL_AUDIT};</property>
+                  name="ParameterMap">#{Package\Migrate Data\LMS Source.Outputs[OLE DB Source Output].Columns[INSTITUTION_CODE]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3032,7 +3106,9 @@ where [refTable].[INSTITUTION_CODE] = ?</property>
 	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID ,NAME_EN AS AUDITOR_TYPE_NAME 
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
-WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
+WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'
+UNION ALL
+SELECT 'NULL', NULL, NULL</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
@@ -3042,7 +3118,9 @@ WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'</property>
 	,CONVERGENCE_MASTER_DATA_ID AS AUDITOR_TYPE_ID ,NAME_EN AS AUDITOR_TYPE_NAME 
 FROM CONVERGENCE_MASTER_TYPE
 JOIN CONVERGENCE_MASTER_DATA ON FK_CONVERGENCE_MASTER_TYPE_ID = CONVERGENCE_MASTER_TYPE_ID
-WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE') [refTable]
+WHERE TYPE = 'EXTERNAL_AUDITOR_TYPE'
+UNION ALL
+SELECT 'NULL', NULL, NULL) [refTable]
 where [refTable].[AUDITOR_TYPE_CODE] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -6845,64 +6923,64 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
               startId="Package\Migrate Data\Conditional Split.Outputs[Eligibility]" />
             <path
               refId="Package\Migrate Data.Paths[Lookup Match Output5]"
-              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
-              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output3]"
-              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output]"
-              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
-              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
               endId="Package\Migrate Data\Lookup PRODUCT_STATUS.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output4]"
+              endId="Package\Migrate Data\Lookup AUDITOR_TYPE.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output3]"
+              endId="Package\Migrate Data\Lookup AUDITOR.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output]"
+              endId="Package\Migrate Data\Lookup OPINION.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output1]"
+              endId="Package\Migrate Data\Multicast.Inputs[Multicast Input 1]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup Match Output2]"
+              endId="Package\Migrate Data\Lookup ELIGIBILITY.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Migrate Data.Paths[Lookup No Match Output4]"
-              endId="Package\Migrate Data\Union All R2.Inputs[Union All Input 1]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output5]"
-              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
-              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
-              endId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
               endId="Package\Migrate Data\Label CONTRACT.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup CONTRACT.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
+              refId="Package\Migrate Data.Paths[Lookup No Match Output5]"
               endId="Package\Migrate Data\Union All R1.Inputs[Union All Input 1]"
               name="Lookup No Match Output"
               startId="Package\Migrate Data\Lookup ELIGIBILITY.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output3]"
+              endId="Package\Migrate Data\Label AUDITOR TYPE.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR_TYPE.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output]"
+              endId="Package\Migrate Data\Union All R2.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup OPINION.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output1]"
+              endId="Package\Migrate Data\Label PRODUCT_STATUS.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup PRODUCT_STATUS.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Migrate Data.Paths[Lookup No Match Output2]"
+              endId="Package\Migrate Data\Label AUDITOR.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Migrate Data\Lookup AUDITOR.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Migrate Data.Paths[Migration]"
               endId="Package\Migrate Data\Derived Column.Inputs[Derived Column Input]"
@@ -7096,17 +7174,9 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Label CONTRACT"
           TopLeft="438,104.833333333333" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
-          TopLeft="726,294" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
-          TopLeft="66,399" />
-        <NodeLayout
           Size="136.5,42"
-          Id="Package\Migrate Data\Union All R1"
-          TopLeft="369.5,505" />
+          Id="Package\Migrate Data\Union All R2"
+          TopLeft="498.25,603.25" />
         <NodeLayout
           Size="190,42"
           Id="Package\Migrate Data\Label AUDITOR TYPE"
@@ -7116,6 +7186,10 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Lookup AUDITOR_TYPE"
           TopLeft="69,298" />
         <NodeLayout
+          Size="184,42"
+          Id="Package\Migrate Data\CONTRACT Not Found"
+          TopLeft="737.166666666667,102.333333333333" />
+        <NodeLayout
           Size="173,42"
           Id="Package\Migrate Data\Insert DOCUMENT"
           TopLeft="408.25,1075" />
@@ -7124,37 +7198,37 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Label AUDITOR"
           TopLeft="443,194" />
         <NodeLayout
-          Size="136.5,42"
-          Id="Package\Migrate Data\Union All R2"
-          TopLeft="498.25,603.25" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Migrate Data\Conditional Split"
-          TopLeft="314.25,702" />
-        <NodeLayout
           Size="159.5,42"
           Id="Package\Migrate Data\Lookup OPINION"
           TopLeft="90,599" />
         <NodeLayout
-          Size="184,42"
-          Id="Package\Migrate Data\CONTRACT Not Found"
-          TopLeft="737.166666666667,102.333333333333" />
+          Size="195,42"
+          Id="Package\Migrate Data\ELIGIBILITY Not Found"
+          TopLeft="1058,504" />
         <NodeLayout
           Size="237,42"
           Id="Package\Migrate Data\PRODUCT_STATUS Not Found"
           TopLeft="708,397" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\Migrate Data\Lookup AUDITOR"
-          TopLeft="81,198" />
+          Size="155,42"
+          Id="Package\Migrate Data\Conditional Split"
+          TopLeft="314.25,702" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Migrate Data\AUDITOR TYPE Not Found"
+          TopLeft="726,294" />
         <NodeLayout
           Size="197,42"
           Id="Package\Migrate Data\Unpivot by DOCUMENT"
           TopLeft="398.25,880" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\Migrate Data\ELIGIBILITY Not Found"
-          TopLeft="1058,504" />
+          Size="161.5,42"
+          Id="Package\Migrate Data\Lookup AUDITOR"
+          TopLeft="85.1666666666667,198" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
+          TopLeft="701.25,1070" />
         <NodeLayout
           Size="134,42"
           Id="Package\Migrate Data\LMS Source"
@@ -7164,29 +7238,37 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Lookup ELIGIBILITY"
           TopLeft="83,506" />
         <NodeLayout
-          Size="224,42"
-          Id="Package\Migrate Data\Drop rows without documents"
-          TopLeft="387.25,982" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
-          TopLeft="74.7142857142857,881.142857142857" />
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Migrate Data\Label PRODUCT_STATUS"
-          TopLeft="408,397" />
+          Size="136.5,42"
+          Id="Package\Migrate Data\Union All R1"
+          TopLeft="369.5,505" />
         <NodeLayout
           Size="180,42"
           Id="Package\Migrate Data\OPINION Not Found"
           TopLeft="1065,597" />
         <NodeLayout
+          Size="224,42"
+          Id="Package\Migrate Data\Drop rows without documents"
+          TopLeft="387.25,982" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Migrate Data\Label PRODUCT_STATUS"
+          TopLeft="408,397" />
+        <NodeLayout
           Size="120.5,42"
           Id="Package\Migrate Data\Multicast"
           TopLeft="113,701.5" />
         <NodeLayout
+          Size="207,42"
+          Id="Package\Migrate Data\Insert EXTERNAL_AUDIT"
+          TopLeft="74.7142857142857,881.142857142857" />
+        <NodeLayout
           Size="155,42"
           Id="Package\Migrate Data\Label OPINION"
           TopLeft="763,598" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Migrate Data\Lookup CONTRACT"
+          TopLeft="73,100" />
         <NodeLayout
           Size="158,42"
           Id="Package\Migrate Data\Derived Column"
@@ -7196,17 +7278,13 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           Id="Package\Migrate Data\Label ELIGIBILITY"
           TopLeft="756,505" />
         <NodeLayout
-          Size="179,42"
-          Id="Package\Migrate Data\Lookup CONTRACT"
-          TopLeft="73,100" />
-        <NodeLayout
           Size="176,42"
           Id="Package\Migrate Data\AUDITOR Not Found"
           TopLeft="739,192" />
         <NodeLayout
-          Size="240,42"
-          Id="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT"
-          TopLeft="701.25,1070" />
+          Size="207,42"
+          Id="Package\Migrate Data\Lookup PRODUCT_STATUS"
+          TopLeft="66,399" />
         <EdgeLayout
           Id="Package\Migrate Data.Paths[With documents]"
           TopLeft="497,1024">
@@ -7445,78 +7523,6 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup No Match Output5]"
-          TopLeft="273,419">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="135,0"
-              Start="0,0"
-              End="127.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="127.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="7.94361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
-          TopLeft="249.5,622.125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="248.75,0"
-              Start="0,0"
-              End="241.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="241.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="64.81861328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
-          TopLeft="249,217">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="194,0"
-              Start="0,0"
-              End="186.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="186.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="37.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
           TopLeft="263,526.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7540,7 +7546,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          Id="Package\Migrate Data.Paths[Lookup No Match Output4]"
           TopLeft="252,123.416666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7564,7 +7570,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          Id="Package\Migrate Data.Paths[Lookup No Match Output3]"
           TopLeft="271,317.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7588,79 +7594,79 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output2]"
+          TopLeft="246.666666666667,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.333333333333,0"
+              Start="0,0"
+              End="188.833333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="188.833333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="38.6102799479165,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output1]"
+          TopLeft="273,419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135,0"
+              Start="0,0"
+              End="127.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="127.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.94361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup No Match Output]"
+          TopLeft="249.5,622.125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="248.75,0"
+              Start="0,0"
+              End="241.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="241.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="64.81861328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Migrate Data.Paths[Lookup Match Output5]"
-          TopLeft="171.375,548">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
-          TopLeft="171.5,641">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
-              Start="0,0"
-              End="0,53">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
-          TopLeft="171.25,441">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65"
-              Start="0,0"
-              End="0,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
           TopLeft="169.75,340">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7684,8 +7690,8 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
-          TopLeft="167.5,240">
+          Id="Package\Migrate Data.Paths[Lookup Match Output4]"
+          TopLeft="167.958333333333,240">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7708,8 +7714,8 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Migrate Data.Paths[Lookup Match Output]"
-          TopLeft="163.75,142">
+          Id="Package\Migrate Data.Paths[Lookup Match Output3]"
+          TopLeft="164.208333333333,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7728,6 +7734,78 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output2]"
+          TopLeft="171.25,441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output1]"
+          TopLeft="171.5,641">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Data.Paths[Lookup Match Output]"
+          TopLeft="171.375,548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,15.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -7925,66 +8003,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup PRODUCT_STATUS">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\Lookup AUDITOR_TYPE">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup OPINION">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -8020,20 +8039,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\PRODUCT_STATUS Not Found">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Lookup AUDITOR">
+    design-time-name="Package\Migrate Data\Lookup OPINION">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -8069,6 +8075,68 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\PRODUCT_STATUS Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\AUDITOR TYPE Not Found">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Lookup AUDITOR">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Migrate Data\LMS Source">
     <Properties>
       <Property>
@@ -8082,7 +8150,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8092,7 +8160,7 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8149,15 +8217,25 @@ where [refTable].[PRODUCT_STATUS_CODE] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Migrate Data\Insert DOCUMENT_EXT_AUDIT">
+    design-time-name="Package\Migrate Data\Lookup PRODUCT_STATUS">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
