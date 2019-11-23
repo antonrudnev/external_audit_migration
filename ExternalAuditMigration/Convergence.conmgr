@@ -5,10 +5,6 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=AZDDBE01\AZSTGOPESINST2;User ID=everisadm;Initial Catalog=OPERATIONS_EXTERNAL_AUDIT_QA;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAg/cg+DWIeE6K2UKd1WgGOAAAAAACAAAAAAAQZgAAAAEAACAAAAC2IMLtqU40v+vVRsHwuImqoaE1j86XxHtNyoQjuXyevgAAAAAOgAAAAAIAACAAAAAIO09KjItOmNlV7XMFjXqFT8Tg4tL9VB+kN097+5gSXYAAAAD3EQ8qzR4ISJE8VDuH/F+N8QC7NkjOwo6F6s1zbuX9XI0k1U1cTLX5RmyyGPulrbbmUZtH4+mHhpRZv2bnMGPnYtqo9jHxhXgOpcC8UjUzwbZiPQwkRmd6Py/y7f9esgYLIGNBhfM4OVGtwhKmFq6Y434DlD+RirQlwJoQ4nTekUAAAAChg9ZIGr5SA88kIDhAsUuSSyFd2rLPJizwXC6zuZ3VoeRZv7iiBC5Dt1BAS4LAfcDaP0ehFqputJao/VipUlh9</DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectionString="Data Source=.;Initial Catalog=OPERATIONS_PP_20191123;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
